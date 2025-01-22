@@ -1,0 +1,45 @@
+﻿<waitDialog [showWait]="showWait"></waitDialog> 
+<form novalidate>
+    <ng-container *ngIf="visible">
+        <h2 class="title">{{title}}</h2>
+        <div class="siuRegion" [ngClass]="cssClasses">
+            <imes-lensesearch [field]="ptuputhisAsesor" *ngIf="ptuputhisAsesor.visible"
+                (selected)="processptuputhisasesorSelected($event)" (cleared)="cleanptuputhisasesor()"
+                (keypressLenseSearch)="onKeypressLenseSearch('onptuputhisasesorChange')"
+                (searched)="doSearchAction('ptuputhisAsesor')"></imes-lensesearch>
+            <imes-lensesearch [field]="ptuptSucursal" *ngIf="ptuptSucursal.visible"
+                (selected)="processptuptsucursalSelected($event)" (cleared)="cleanptuptsucursal()"
+                (keypressLenseSearch)="onKeypressLenseSearch('onptuptsucursalChange')"
+                (searched)="doSearchAction('ptuptSucursal')"></imes-lensesearch>
+            <div class="card argumentGroup" *ngIf="isGroupVisible('2')">
+                <div class="card-header">{{getGroupAlias('2')}}</div>
+                <div class="card-body">
+                    <imes-preload [field]="ptuptTipoIdentificacion" *ngIf="ptuptTipoIdentificacion.visible"></imes-preload>
+                    <imes-input-string [field]="ptuptNumIdentificacion" *ngIf="ptuptNumIdentificacion.visible"></imes-input-string>
+                    <imes-input-string [field]="ptupeNumUsuario" *ngIf="ptupeNumUsuario.visible"></imes-input-string>
+                    <imes-input-string [field]="ptupuPrimerNombre" *ngIf="ptupuPrimerNombre.visible"></imes-input-string>
+                    <imes-input-string [field]="ptupuSegundoNombre" *ngIf="ptupuSegundoNombre.visible"></imes-input-string>
+                    <imes-input-string [field]="ptupuPrimerApellido" *ngIf="ptupuPrimerApellido.visible"></imes-input-string>
+                    <imes-input-string [field]="ptupuSegundoApellido" *ngIf="ptupuSegundoApellido.visible"></imes-input-string>
+                    <imes-input-string [field]="ptuptEmail" *ngIf="ptuptEmail.visible"></imes-input-string>
+                    <imes-input-string [field]="ptuptUsuarioLDAP" *ngIf="ptuptUsuarioLDAP.visible"></imes-input-string>
+                </div>
+            </div>
+            <div class="card argumentGroup" *ngIf="isGroupVisible('3')">
+                <div class="card-header">{{getGroupAlias('3')}}</div>
+                <div class="card-body">
+                    <imes-input-radio [field]="ptupuModDBasicosPersona" *ngIf="ptupuModDBasicosPersona.visible"></imes-input-radio>
+                    <imes-input-radio [field]="ptupModificaDirector" *ngIf="ptupModificaDirector.visible"></imes-input-radio>
+                    <imes-input-radio [field]="ptupVerDBasicosPersona" *ngIf="ptupVerDBasicosPersona.visible"></imes-input-radio>
+                    <imes-input-radio [field]="ptupVerDocsPersona" *ngIf="ptupVerDocsPersona.visible"></imes-input-radio>
+                    <imes-input-radio [field]="ptupVerContratoNovedad" *ngIf="ptupVerContratoNovedad.visible"></imes-input-radio>
+                    <imes-input-radio [field]="ptValidadorUsuarios" *ngIf="ptValidadorUsuarios.visible"></imes-input-radio>
+                </div>
+            </div>
+        </div>
+        <div class="col-12 siuButtons">
+            <button type="button" class="btnOk btn btn-primary" (click)="saveChanges()">{{langMng.translateText('app_SIU_BTNOK', '')}}</button>
+            <button type="button" class="btnCancel btn btn-danger" (click)="processCancel()">{{langMng.translateText('app_SIU_BTNCANCEL', '')}}</button>
+        </div>
+    </ng-container>
+</form>

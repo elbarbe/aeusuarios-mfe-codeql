@@ -1,0 +1,23 @@
+﻿<waitDialog [showWait]="showWait"></waitDialog> 
+<form novalidate>
+    <ng-container *ngIf="visible">
+        <h2 class="title">{{title}}</h2>
+        <div class="siuRegion" [ngClass]="cssClasses">
+            <imes-lensesearch [field]="ptupuagrProductoT" *ngIf="ptupuagrProductoT.visible"
+                (selected)="processptupuagrproductotSelected($event)" (cleared)="cleanptupuagrproductot()"
+                (keypressLenseSearch)="onKeypressLenseSearch('onptupuagrproductotChange')"
+                (searched)="doSearchAction('ptupuagrProductoT')"></imes-lensesearch>
+            <imes-lensesearch [field]="ptupuagrAsesor" *ngIf="ptupuagrAsesor.visible"
+                (selected)="processptupuagrasesorSelected($event)" (cleared)="cleanptupuagrasesor()"
+                (keypressLenseSearch)="onKeypressLenseSearch('onptupuagrasesorChange')"
+                (searched)="doSearchAction('ptupuagrAsesor')"></imes-lensesearch>
+            <imes-input-date [field]="ptupuatrFechaInicio" *ngIf="ptupuatrFechaInicio.visible"></imes-input-date>
+            <imes-input-date [field]="ptupuatrFechaFin" *ngIf="ptupuatrFechaFin.visible"></imes-input-date>
+            <imes-input-numeric [field]="ptupuatrCodigo" *ngIf="ptupuatrCodigo.visible"></imes-input-numeric>
+        </div>
+        <div class="col-12 siuButtons">
+            <button type="button" class="btnOk btn btn-primary" (click)="saveChanges()">{{langMng.translateText('app_SIU_BTNOK', '')}}</button>
+            <button type="button" class="btnCancel btn btn-danger" (click)="processCancel()">{{langMng.translateText('app_SIU_BTNCANCEL', '')}}</button>
+        </div>
+    </ng-container>
+</form>

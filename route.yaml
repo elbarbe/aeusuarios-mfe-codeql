@@ -1,0 +1,21 @@
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  name: aeusuarios-mfe
+  labels:
+    app: aeusuarios-mfe
+    app.kubernetes.io/component: aeusuarios-mfe
+    app.kubernetes.io/instance: aeusuarios-mfe
+    app.kubernetes.io/name: aeusuarios-mfe
+    app.kubernetes.io/part-of: ae-app-frontend
+    app.openshift.io/runtime: aeusuarios-mfe
+spec:
+#INIHOST
+#  host: aeusuarios-mfe-soporte-colsanitas-dev.apps.sandbox-m3.1530.p1.openshiftapps.com
+  host: aeusuarios-mfe-soporte-colsanitas-dev.apps.rm3.7wse.p1.openshiftapps.com
+#FINHOST
+  to:
+    kind: Service
+    name: aeusuarios-mfe
+  tls:
+    termination: edge

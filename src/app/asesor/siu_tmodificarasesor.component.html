@@ -1,0 +1,25 @@
+﻿<waitDialog [showWait]="showWait"></waitDialog> 
+<form novalidate>
+    <ng-container *ngIf="visible">
+        <h2 class="title">{{title}}</h2>
+        <div class="siuRegion" [ngClass]="cssClasses">
+            <imes-lensesearch [field]="puthisAsesor" *ngIf="puthisAsesor.visible"
+                (selected)="processputhisasesorSelected($event)" (cleared)="cleanputhisasesor()"
+                (keypressLenseSearch)="onKeypressLenseSearch('onputhisasesorChange')"
+                (searched)="doSearchAction('puthisAsesor')"></imes-lensesearch>
+            <imes-input-radio [field]="ptupuModDBasicosPersona" *ngIf="ptupuModDBasicosPersona.visible"></imes-input-radio>
+            <imes-input-radio [field]="pModificaDirector" *ngIf="pModificaDirector.visible"></imes-input-radio>
+            <imes-input-string [field]="ptUsuarioLDAP" *ngIf="ptUsuarioLDAP.visible"></imes-input-string>
+            <imes-input-string [field]="ptEmail" *ngIf="ptEmail.visible"></imes-input-string>
+            <imes-input-radio [field]="peIntegral" *ngIf="peIntegral.visible"></imes-input-radio>
+            <imes-input-radio [field]="ptupVerDBasicosPersona" *ngIf="ptupVerDBasicosPersona.visible"></imes-input-radio>
+            <imes-input-radio [field]="ptupVerDocsPersona" *ngIf="ptupVerDocsPersona.visible"></imes-input-radio>
+            <imes-input-radio [field]="ptupVerContratoNovedad" *ngIf="ptupVerContratoNovedad.visible"></imes-input-radio>
+            <imes-input-radio [field]="ptValidadorUsuarios" *ngIf="ptValidadorUsuarios.visible"></imes-input-radio>
+        </div>
+        <div class="col-12 siuButtons">
+            <button type="button" class="btnOk btn btn-primary" (click)="saveChanges()">{{langMng.translateText('app_SIU_BTNOK', '')}}</button>
+            <button type="button" class="btnCancel btn btn-danger" (click)="processCancel()">{{langMng.translateText('app_SIU_BTNCANCEL', '')}}</button>
+        </div>
+    </ng-container>
+</form>

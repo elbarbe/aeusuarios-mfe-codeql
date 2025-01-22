@@ -1,0 +1,16 @@
+<p-dialog header="" [(visible)]="visible" [modal]="true" (onHide)="cancel()" [blockScroll]="true" position="top"
+    [style]="{'padding-top': '60px'}"
+    [draggable]="true" [closeOnEscape]="true" [closable]="true" [resizable]="false"
+    styleClass="col-12 col-sm-11 col-md-11 modalForIU"
+    [contentStyle]="{'max-height':'500px', 'display': 'flow-root'}" >
+    <p-header>{{title}}</p-header>
+
+    <genericsiu *ngIf="selector=='genericsiu'"></genericsiu>
+
+    <imes-gs-siu-tmodificaragente *ngIf="selector=='imes-gs-siu-tmodificaragente'"></imes-gs-siu-tmodificaragente>
+    <imes-funcionario-siu-tcambiardisponible *ngIf="selector=='imes-funcionario-siu-tcambiardisponible'"></imes-funcionario-siu-tcambiardisponible>
+    <imes-asesor-siu-tmodificarasesor *ngIf="selector=='imes-asesor-siu-tmodificarasesor'"></imes-asesor-siu-tmodificarasesor>
+    <imes-rol-siu-crear *ngIf="selector=='imes-rol-siu-crear'"></imes-rol-siu-crear>
+
+</p-dialog>
+
