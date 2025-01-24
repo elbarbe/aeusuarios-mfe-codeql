@@ -429,13 +429,13 @@ export class GSSIUuTGMODASESORAGENCIAComponent extends AbstractServiceIU impleme
                 this.util.getInt(varptuputhisasesor.get('tipoidentificacion.Codigo'))));
             // pt_ptNumIdentificacion.SetValue( v.numidentificacion )
             this.ptuptNumIdentificacion.setValue(varptuputhisasesor.get('numidentificacion'));
-            // pt_pVerContratoNovedad.SetValue( v.VerContratoNovedad )
+            // pt_pVerContratoNovedad.SetValue( v.vercontratonovedad )
             this.ptupVerContratoNovedad.setValue(this.util.getBool(varptuputhisasesor.get('vercontratonovedad')));
-            // pt_pVerDBasicosPersona.SetValue( v.VerDBasicosPersona )
+            // pt_pVerDBasicosPersona.SetValue( v.verdbasicospersona )
             this.ptupVerDBasicosPersona.setValue(this.util.getBool(varptuputhisasesor.get('verdbasicospersona')));
-            // pt_pVerDocsPersona.SetValue( v.VerDocIdentificacionPersona )
+            // pt_pVerDocsPersona.SetValue( v.verdocidentificacionpersona )
             this.ptupVerDocsPersona.setValue(this.util.getBool(varptuputhisasesor.get('verdocidentificacionpersona')));
-            // ptValidadorUsuarios.SetValue( v.AccesoValidadorUsuarios )
+            // ptValidadorUsuarios.SetValue( v.accesovalidadorusuarios )
             this.ptValidadorUsuarios.setValue(this.util.getBool(varptuputhisasesor.get('accesovalidadorusuarios')));
         }
         this.executePendingDependencyRules();

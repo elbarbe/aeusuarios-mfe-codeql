@@ -307,13 +307,13 @@ export class AsesorSIUuTMODIFICARASESORComponent extends AbstractServiceIU imple
             this.ptUsuarioLDAP.setValue(varputhisasesor.get('usuarioldap'));
             // peIntegral.SetValue( v.esintegral )
             this.peIntegral.setValue(this.util.getBool(varputhisasesor.get('esintegral')));
-            // pt_pVerContratoNovedad.SetValue( v.VerContratoNovedad )
+            // pt_pVerContratoNovedad.SetValue( v.vercontratonovedad )
             this.ptupVerContratoNovedad.setValue(this.util.getBool(varputhisasesor.get('vercontratonovedad')));
-            // pt_pVerDBasicosPersona.SetValue( v.VerDBasicosPersona )
+            // pt_pVerDBasicosPersona.SetValue( v.verdbasicospersona )
             this.ptupVerDBasicosPersona.setValue(this.util.getBool(varputhisasesor.get('verdbasicospersona')));
-            // pt_pVerDocsPersona.SetValue( v.VerDocIdentificacionPersona )
+            // pt_pVerDocsPersona.SetValue( v.verdocidentificacionpersona )
             this.ptupVerDocsPersona.setValue(this.util.getBool(varputhisasesor.get('verdocidentificacionpersona')));
-            // ptValidadorUsuarios.SetValue( v.AccesoValidadorUsuarios )
+            // ptValidadorUsuarios.SetValue( v.accesovalidadorusuarios )
             this.ptValidadorUsuarios.setValue(this.util.getBool(varputhisasesor.get('accesovalidadorusuarios')));
         }
         this.executePendingDependencyRules();

@@ -139,6 +139,7 @@ export class ModelConstants {
     public static readonly Logdatosdominio = {name : 'LogDatosDominio'};
     public static readonly Contratosexentosfingreso = {name : 'ContratosExentosFIngreso'};
     public static readonly Logcontratosexentosfingreso = {name : 'LogContratosExentosFIngreso'};
+    public static readonly Textoaviso = {name : 'TextoAviso'};
     public static readonly Globalservices = {name : 'GlobalServices', siuutcrearagente: 'siu_tcrearagente',
         siuutmodificaragente: 'siu_tmodificaragente', siuutgnewasesoragencia: 'siu_tgnewasesoragencia',
         siuutgmodasesoragencia: 'siu_tgmodasesoragencia'};
