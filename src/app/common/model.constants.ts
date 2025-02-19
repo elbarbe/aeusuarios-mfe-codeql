@@ -86,7 +86,6 @@ export class ModelConstants {
     public static readonly Marcamedicac = {name : 'MarcaMedicaC'};
     public static readonly Tiposucursalc = {name : 'TipoSucursalC'};
     public static readonly Conceptoc = {name : 'ConceptoC'};
-    public static readonly Anonimo = {name : 'Anonimo'};
     public static readonly Detalletarifa = {name : 'DetalleTarifa'};
     public static readonly Agentexproducto = {name : 'AgentexProducto', siuueliminar: 'siu_eliminar', siuutcrear: 'siu_tcrear',
         siuutadddominio: 'siu_tadddominio', siuutdeldominio: 'siu_tdeldominio', piuuagentexproducto: 'piu_agentexproducto',
@@ -140,6 +139,9 @@ export class ModelConstants {
     public static readonly Contratosexentosfingreso = {name : 'ContratosExentosFIngreso'};
     public static readonly Logcontratosexentosfingreso = {name : 'LogContratosExentosFIngreso'};
     public static readonly Textoaviso = {name : 'TextoAviso'};
+    public static readonly Usuariosistemaexterno = {name : 'UsuarioSistemaExterno', siuucrear: 'siu_crear',
+        siuueliminar: 'siu_eliminar', siuumodificar: 'siu_modificar', siuusetabcdefgh: 'siu_setpassword',
+        piuuusuariosistemaexterno: 'piu_usuariosistemaexterno'};
     public static readonly Globalservices = {name : 'GlobalServices', siuutcrearagente: 'siu_tcrearagente',
         siuutmodificaragente: 'siu_tmodificaragente', siuutgnewasesoragencia: 'siu_tgnewasesoragencia',
         siuutgmodasesoragencia: 'siu_tgmodasesoragencia'};

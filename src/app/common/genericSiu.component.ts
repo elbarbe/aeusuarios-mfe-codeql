@@ -322,6 +322,9 @@ export class GenericSiuComponent implements OnInit {
             case ModelConstants.Agentexproducto.name:
                 siuFound = this.configureClassAgentexProducto();
                 break;
+            case ModelConstants.Usuariosistemaexterno.name:
+                siuFound = this.configureClassUsuarioSistemaExterno();
+                break;
         }
         return siuFound;
     }
@@ -393,6 +396,30 @@ export class GenericSiuComponent implements OnInit {
                     'Agente x Producto');
                 this.argSupInfAttNames = 'asesor.drvnombrecompleto,productot.descripcion';
                 this.argSupInfAttTypes = [Field.dtString, Field.dtString];
+                siuFound = true;
+                break;
+        }
+        return siuFound;
+    }
+
+    /**
+     * Configuration for class UsuarioSistemaExterno
+     */
+    private configureClassUsuarioSistemaExterno(): boolean {
+        let siuFound = false;
+        switch (this.serviceIUName) {
+            case ModelConstants.Usuariosistemaexterno.siuueliminar:
+                this.title = this.langMng.translateText('cls_UsuarioSistemaExterno_svc_eliminar',
+                    'Eliminar');
+                this.serviceName = 'eliminar';
+                this.argName = 'p_thisusuariosistemaexterno';
+                this.argNameInRequest = 'p_thisusuariosistemaexterno_oid';
+                this.argClassName = ModelConstants.Usuariosistemaexterno.name;
+                this.argAlias = this.langMng.translateText(
+                    'cls_UsuarioSistemaExterno_svc_eliminar_inArg_p_thisUsuarioSistemaExterno',
+                    'Sistema Externo');
+                this.argSupInfAttNames = 'login';
+                this.argSupInfAttTypes = [Field.dtString];
                 siuFound = true;
                 break;
         }

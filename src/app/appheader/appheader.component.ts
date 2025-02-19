@@ -99,6 +99,10 @@ export class AppHeaderComponent implements OnInit {
                 exchInfo.targetIUName = ModelConstants.Gestor.piuugestores;
                 break;
             case '0_7':
+                exchInfo.targetClassName = ModelConstants.Usuariosistemaexterno.name;
+                exchInfo.targetIUName = ModelConstants.Usuariosistemaexterno.piuuusuariosistemaexterno;
+                break;
+            case '0_8':
                 exchInfo.targetClassName = ModelConstants.Afiliaciones.name;
                 exchInfo.targetIUName = ModelConstants.Afiliaciones.piuuafiliaciones;
                 break;

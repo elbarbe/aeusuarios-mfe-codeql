@@ -55,6 +55,8 @@ const routes: Routes = [
       loadChildren: () => import('./loginformacionasesor/loginformacionasesor.module').then(m => m.LogInformacionAsesorModule) },
     { path: environment.prefix + '/loghistoricoplanes',
       loadChildren: () => import('./loghistoricoplanes/loghistoricoplanes.module').then(m => m.LogHistoricoPlanesModule) },
+    { path: environment.prefix + '/usuariosistemaexterno',
+      loadChildren: () => import('./usuariosistemaexterno/usuariosistemaexterno.module').then(m => m.UsuarioSistemaExternoModule) },
     { path: environment.prefix + '/globalservices',
       loadChildren: () => import('./globalservices/globalservices.module').then(m => m.GlobalServicesModule) },
     { path: '**', component: EmptyRouteComponent }

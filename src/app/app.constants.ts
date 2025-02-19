@@ -533,12 +533,6 @@ export class Configuration {
             ]
         }
         , {
-            className: ModelConstants.Anonimo.name,
-            navKey: 'anonimo',
-            ius: [
-            ]
-        }
-        , {
             className: ModelConstants.Detalletarifa.name,
             navKey: 'detalletarifa',
             ius: [
@@ -854,6 +848,22 @@ export class Configuration {
             className: ModelConstants.Textoaviso.name,
             navKey: 'textoaviso',
             ius: [
+            ]
+        }
+        , {
+            className: ModelConstants.Usuariosistemaexterno.name,
+            navKey: 'usuariosistemaexterno',
+            ius: [
+                { name: ModelConstants.Usuariosistemaexterno.siuucrear,
+                    navKey: 'siu_crear' }
+                , { name: ModelConstants.Usuariosistemaexterno.siuueliminar,
+                    navKey: '_GENERICSIU' }
+                , { name: ModelConstants.Usuariosistemaexterno.siuumodificar,
+                    navKey: 'siu_modificar' }
+                , { name: ModelConstants.Usuariosistemaexterno.siuusetabcdefgh,
+                    navKey: 'siu_setpassword' }
+                , { name: ModelConstants.Usuariosistemaexterno.piuuusuariosistemaexterno,
+                    navKey: 'piu_usuariosistemaexterno' }
             ]
         }
         , {

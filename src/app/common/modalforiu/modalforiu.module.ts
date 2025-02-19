@@ -7,6 +7,7 @@ import { GlobalServicesModule } from '../../globalservices/globalservices.module
 import { FuncionarioModule } from '../../funcionario/funcionario.module';
 import { AsesorModule } from '../../asesor/asesor.module';
 import { RolModule } from '../../rol/rol.module';
+import { UsuarioSistemaExternoModule } from '../../usuariosistemaexterno/usuariosistemaexterno.module';
 
 @NgModule({
   imports: [
@@ -16,7 +17,8 @@ import { RolModule } from '../../rol/rol.module';
     GlobalServicesModule,
     FuncionarioModule,
     AsesorModule,
-    RolModule
+    RolModule,
+    UsuarioSistemaExternoModule
   ],
   declarations: [
     ModalForIUComponent
