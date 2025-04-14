@@ -81,7 +81,7 @@ export class AsesorMDIUuDirectoresAsesoresComponent extends AbstractMDIU impleme
             this.d0.title = this.langMng.translateText(
                 'cls_Asesor_mdiu_MDIU_DirectoresAsesores_detail_Clas_1431886233600794UIMaDet_2Det_2',
                 'Subordinados');
-            this.d0.setExchangeInfo(this.util.createExchangeInfoNavigationFromMasterToDetail('Asesor',
+            this.d0.initializeFromExchangeInfo(this.util.createExchangeInfoNavigationFromMasterToDetail('Asesor',
                 this.master.getContext(), null, '', null, 'Asesor', 'Clas_1431886233600794FiltNav_3'));
         }
         super.initializeComponents();

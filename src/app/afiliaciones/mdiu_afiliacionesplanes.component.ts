@@ -81,7 +81,7 @@ export class AfiliacionesMDIUuAfiliacionesPlanesComponent extends AbstractMDIU i
             this.d0.title = this.langMng.translateText(
                 'cls_Afiliaciones_mdiu_MDIU_AfiliacionesPlanes_detail_Clas_1434549485568784UIMaDet_1Det_1',
                 'Planes asociados');
-            this.d0.setExchangeInfo(this.util.createExchangeInfoNavigationFromMasterToDetail('Planes',
+            this.d0.initializeFromExchangeInfo(this.util.createExchangeInfoNavigationFromMasterToDetail('Planes',
                 this.master.getContext(), null, 'Afiliaciones', null, 'Afiliaciones', ''));
         }
         super.initializeComponents();

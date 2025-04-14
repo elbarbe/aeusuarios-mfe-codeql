@@ -81,7 +81,7 @@ export class AsesorMDIUuAsesorProductosComponent extends AbstractMDIU implements
             this.d0.title = this.langMng.translateText(
                 'cls_Asesor_mdiu_MDIU_AsesorProductos_detail_Clas_1431886233600794UIMaDet_3Det_2',
                 'Productos del asesor');
-            this.d0.setExchangeInfo(this.util.createExchangeInfoNavigationFromMasterToDetail('AgentexProducto',
+            this.d0.initializeFromExchangeInfo(this.util.createExchangeInfoNavigationFromMasterToDetail('AgentexProducto',
                 this.master.getContext(), null, 'Asesor', null, 'Asesor', ''));
         }
         super.initializeComponents();

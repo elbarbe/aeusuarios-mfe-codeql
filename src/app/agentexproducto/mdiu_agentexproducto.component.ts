@@ -81,7 +81,7 @@ export class AgentexProductoMDIUuAgentexProductoComponent extends AbstractMDIU i
             this.d0.title = this.langMng.translateText(
                 'cls_AgentexProducto_mdiu_MDIU_AgentexProducto_detail_Clas_1460560723968553UIMaDet_1Det_1',
                 'Dominios');
-            this.d0.setExchangeInfo(this.util.createExchangeInfoNavigationFromMasterToDetail('Dominio',
+            this.d0.initializeFromExchangeInfo(this.util.createExchangeInfoNavigationFromMasterToDetail('Dominio',
                 this.master.getContext(), null, 'AgentexProducto', null, 'AgentexProducto', ''));
         }
         super.initializeComponents();
