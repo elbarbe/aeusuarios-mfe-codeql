@@ -1,4 +1,4 @@
-﻿import { Component, ChangeDetectionStrategy, OnInit, ChangeDetectorRef } from '@angular/core';
+import { Component, ChangeDetectionStrategy, OnInit, ChangeDetectorRef } from '@angular/core';
 import { AppGlobalInfo } from '../app.appglobalinfo';
 import { Util } from '../common/app.utils';
 import { AbstractMDIU } from '../common/abstractMDIU';
@@ -10,6 +10,9 @@ import { AfiliacionesIIUuAfiliacionesMPlanesComponent } from './iiu_afiliaciones
 import { PlanesPIUuPlanesDAfiliacionComponent } from '../planes/piu_planesdafiliacion.component';
 
 
+/**
+ * « Implements MDIU MDIU_AfiliacionesPlanes of Afiliaciones »
+ */
 @Component({
     selector: 'imes-afiliaciones-mdiu-afiliacionesplanes',
     templateUrl: './mdiu_afiliacionesplanes.component.html',

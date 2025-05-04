@@ -1,4 +1,4 @@
-﻿import { Component, ChangeDetectionStrategy, OnInit, ChangeDetectorRef } from '@angular/core';
+import { Component, ChangeDetectionStrategy, OnInit, ChangeDetectorRef } from '@angular/core';
 import { AppGlobalInfo } from '../app.appglobalinfo';
 import { Util } from '../common/app.utils';
 import { AbstractMDIU } from '../common/abstractMDIU';
@@ -10,6 +10,9 @@ import { AsesorPIUuDirectoresComponent } from './piu_directores.component';
 import { AsesorPIUuAsesorDetalleComponent } from './piu_asesordetalle.component';
 
 
+/**
+ * « Implements MDIU MDIU_DirectoresAsesores of Asesor »
+ */
 @Component({
     selector: 'imes-asesor-mdiu-directoresasesores',
     templateUrl: './mdiu_directoresasesores.component.html',

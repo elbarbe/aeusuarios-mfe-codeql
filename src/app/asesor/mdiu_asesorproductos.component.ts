@@ -1,4 +1,4 @@
-﻿import { Component, ChangeDetectionStrategy, OnInit, ChangeDetectorRef } from '@angular/core';
+import { Component, ChangeDetectionStrategy, OnInit, ChangeDetectorRef } from '@angular/core';
 import { AppGlobalInfo } from '../app.appglobalinfo';
 import { Util } from '../common/app.utils';
 import { AbstractMDIU } from '../common/abstractMDIU';
@@ -10,6 +10,9 @@ import { AsesorIIUuAsesorProductosComponent } from './iiu_asesorproductos.compon
 import { AgentexProductoMDIUuAgentexProductoComponent } from '../agentexproducto/mdiu_agentexproducto.component';
 
 
+/**
+ * « Implements MDIU MDIU_AsesorProductos of Asesor »
+ */
 @Component({
     selector: 'imes-asesor-mdiu-asesorproductos',
     templateUrl: './mdiu_asesorproductos.component.html',

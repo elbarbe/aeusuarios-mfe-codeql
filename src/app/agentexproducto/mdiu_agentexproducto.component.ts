@@ -1,4 +1,4 @@
-﻿import { Component, ChangeDetectionStrategy, OnInit, ChangeDetectorRef } from '@angular/core';
+import { Component, ChangeDetectionStrategy, OnInit, ChangeDetectorRef } from '@angular/core';
 import { AppGlobalInfo } from '../app.appglobalinfo';
 import { Util } from '../common/app.utils';
 import { AbstractMDIU } from '../common/abstractMDIU';
@@ -10,6 +10,9 @@ import { AgentexProductoPIUuAgentexProductoComponent } from './piu_agentexproduc
 import { DominioPIUuDominiosPorAsesorComponent } from '../dominio/piu_dominiosporasesor.component';
 
 
+/**
+ * « Implements MDIU MDIU_AgentexProducto of AgentexProducto »
+ */
 @Component({
     selector: 'imes-agentexproducto-mdiu-agentexproducto',
     templateUrl: './mdiu_agentexproducto.component.html',
