@@ -870,7 +870,9 @@ export class Configuration {
             className: 'globalservices',
             navKey: 'globalservices',
             ius: [
-                { name: ModelConstants.Globalservices.siuutcrearagente,
+                { name: ModelConstants.Globalservices.siuuogsincasesores,
+                    navKey: '_GENERICSIU' }
+                , { name: ModelConstants.Globalservices.siuutcrearagente,
                     navKey: 'siu_tcrearagente' }
                 , { name: ModelConstants.Globalservices.siuutmodificaragente,
                     navKey: 'siu_tmodificaragente' }

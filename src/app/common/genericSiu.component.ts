@@ -325,6 +325,9 @@ export class GenericSiuComponent implements OnInit {
             case ModelConstants.Usuariosistemaexterno.name:
                 siuFound = this.configureClassUsuarioSistemaExterno();
                 break;
+            case ModelConstants.Globalservices.name:
+                siuFound = this.configureGlobalServices();
+                break;
         }
         return siuFound;
     }
@@ -420,6 +423,23 @@ export class GenericSiuComponent implements OnInit {
                     'Sistema Externo');
                 this.argSupInfAttNames = 'login';
                 this.argSupInfAttTypes = [Field.dtString];
+                siuFound = true;
+                break;
+        }
+        return siuFound;
+    }
+
+    /**
+     * Configuration for Global Services
+     */
+    private configureGlobalServices(): boolean {
+        let siuFound = false;
+        switch (this.serviceIUName) {
+            case ModelConstants.Globalservices.siuuogsincasesores:
+                this.title = this.langMng.translateText('gs_OGSINCASESORES',
+                    'Sincronizar asesores');
+                this.serviceName = 'OGSINCASESORES';
+                this.siuHasNoShow = true;
                 siuFound = true;
                 break;
         }

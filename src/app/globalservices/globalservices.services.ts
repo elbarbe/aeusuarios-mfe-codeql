@@ -9,6 +9,7 @@ import { JsonUtility } from '../common/jsonUtility';
  */
 export class GlobalServicesServices extends AbstractServices {
 
+    private oGSINCASESORESSrvName = 'OGSINCASESORES';
     private tCREARAGENTESrvName = 'TCREARAGENTE';
     private tMODIFICARAGENTESrvName = 'TMODIFICARAGENTE';
     private tGNEWASESORAGENCIASrvName = 'TGNEWASESORAGENCIA';
@@ -18,6 +19,23 @@ export class GlobalServicesServices extends AbstractServices {
         protected override readonly appGlobalInfo: AppGlobalInfo,
         protected override readonly util: Util) {
         super(appGlobalInfo, util, 'GlobalServices');
+    }
+
+    /**
+     * Call to the service 'OGSINCASESORES' in the backend
+     * Promise is resolved if service execution is successful and returns void.
+     * If service fails, promise is rejected and returned an instance of ErrorInformation
+     */
+    public oGSINCASESORES(
+        ): Promise<ErrorInformation | void> {
+        const request = {};
+        return new Promise<ErrorInformation | void> ((resolve, reject) => {
+             this.callService(this.oGSINCASESORESSrvName, request).then((response: any) => {
+                resolve();
+            }).catch( (errorInfo: ErrorInformation) => {
+                reject(errorInfo);
+            });
+        });
     }
 
     /**

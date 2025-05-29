@@ -383,6 +383,21 @@ export class AsesorPIUuAsesorComponent extends AbstractPIU implements OnInit {
 
         accItem = new AccNavItem();
         accItem.id = 2;
+        accItem.idXML = 'Clas_1431886233600794AccOfer_1ElemAcc_11';
+        accItem.alias = this.langMng.translateText(
+            'cls_Asesor_act_A_Asesor_PIU_item_Clas_1431886233600794AccOfer_1ElemAcc_11',
+            'Sincronizar');
+        accItem.nounVerb = false;
+        accItem.multiSelection = true;
+        accItem.agents = [ModelConstants.Admin.name, ModelConstants.Superadmin.name];
+        accItem.targetClass = ModelConstants.Globalservices.name;
+        accItem.targetUI = ModelConstants.Globalservices.siuuogsincasesores;
+        accItem.setNoShowProperties('OGSINCASESORES', '', '', false);
+
+        this.actions.push(accItem);
+
+        accItem = new AccNavItem();
+        accItem.id = 3;
         accItem.idXML = 'Clas_1431886233600794AccOfer_1ElemAcc_7';
         accItem.alias = this.langMng.translateText(
             'cls_Asesor_act_A_Asesor_PIU_item_Clas_1431886233600794AccOfer_1ElemAcc_7',
