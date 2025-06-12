@@ -25,7 +25,6 @@ export class LogInformacionAsesorPIUuLogInformacionAsesorComponent extends Abstr
     private readonly dsverdatospersona = 'Ver datos persona';
     private readonly dsverdocspersona = 'Ver documentos persona';
     private readonly dsvercontratonovedad = 'Ver contrato Novedades';
-    private readonly dsaccesovalidadorusuarios = 'Acceso validador usuarios';
 
     /**
      * Component constructor
@@ -119,18 +118,6 @@ export class LogInformacionAsesorPIUuLogInformacionAsesorComponent extends Abstr
         dsItem.alias = this.langMng.translateText(
             'cls_LogInformacionAsesor_ds_DS_LogInformacionAsesor_item_Clas_1623836459008779CjtoVis_1ICtjoVis_3',
             this.dsvercontratonovedad);
-        dsItem.agents = [ModelConstants.Admin.name, ModelConstants.Superadmin.name];
-        dsItem.options = DefinedSelections.DS_SINO;
-        this.displaySet.push(dsItem);
-
-        dsItem = new DisplaySetItem();
-        dsItem.idXML = 'Clas_1623836459008779CjtoVis_1ICtjoVis_6';
-        dsItem.name = 'accesovalidadorusuarios';
-        dsItem.field = 'accesovalidadorusuarios';
-        dsItem.type = Field.dtBool;
-        dsItem.alias = this.langMng.translateText(
-            'cls_LogInformacionAsesor_ds_DS_LogInformacionAsesor_item_Clas_1623836459008779CjtoVis_1ICtjoVis_6',
-            this.dsaccesovalidadorusuarios);
         dsItem.agents = [ModelConstants.Admin.name, ModelConstants.Superadmin.name];
         dsItem.options = DefinedSelections.DS_SINO;
         this.displaySet.push(dsItem);

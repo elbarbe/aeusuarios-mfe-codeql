@@ -147,23 +147,20 @@ export class AsesorServices extends AbstractServices {
      * @param ptupVerDBasicosPersonaInArg Mandatory argument 'pt_pVerDBasicosPersona'
      * @param ptupVerDocsPersonaInArg Mandatory argument 'pt_pVerDocsPersona'
      * @param ptupVerContratoNovedadInArg Mandatory argument 'pt_pVerContratoNovedad'
-     * @param ptValidadorUsuariosInArg Mandatory argument 'ptValidadorUsuarios'
      */
     public tMODIFICARASESOR(
         puthisAsesorInArg: any, ptupuModDBasicosPersonaInArg: boolean, pModificaDirectorInArg: boolean,
         ptUsuarioLDAPInArg: string | null, ptEmailInArg: string | null, peIntegralInArg: boolean,
-        ptupVerDBasicosPersonaInArg: boolean, ptupVerDocsPersonaInArg: boolean, ptupVerContratoNovedadInArg: boolean,
-        ptValidadorUsuariosInArg: boolean): Promise<void> {
+        ptupVerDBasicosPersonaInArg: boolean, ptupVerDocsPersonaInArg: boolean, ptupVerContratoNovedadInArg: boolean): Promise<void> {
         const request: {
             p_thisasesor_oid: any, pt_p_moddbasicospersona: boolean, pmodificadirector: boolean, ptusuarioldap: string | null,
             ptemail: string | null, peintegral: boolean, pt_pverdbasicospersona: boolean, pt_pverdocspersona: boolean,
-            pt_pvercontratonovedad: boolean, ptvalidadorusuarios: boolean
+            pt_pvercontratonovedad: boolean
         } = {
             p_thisasesor_oid: puthisAsesorInArg, pt_p_moddbasicospersona: ptupuModDBasicosPersonaInArg,
             pmodificadirector: pModificaDirectorInArg, ptusuarioldap: ptUsuarioLDAPInArg, ptemail: ptEmailInArg,
             peintegral: peIntegralInArg, pt_pverdbasicospersona: ptupVerDBasicosPersonaInArg,
-            pt_pverdocspersona: ptupVerDocsPersonaInArg, pt_pvercontratonovedad: ptupVerContratoNovedadInArg,
-            ptvalidadorusuarios: ptValidadorUsuariosInArg
+            pt_pverdocspersona: ptupVerDocsPersonaInArg, pt_pvercontratonovedad: ptupVerContratoNovedadInArg
         };
         return new Promise<void> ((resolve, reject) => {
              this.callService(this.tMODIFICARASESORSrvName, request).then((response: any) => {

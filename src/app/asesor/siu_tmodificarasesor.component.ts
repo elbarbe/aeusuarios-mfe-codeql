@@ -25,7 +25,6 @@ export class AsesorSIUuTMODIFICARASESORComponent extends AbstractServiceIU imple
     public ptupVerDBasicosPersona: FieldDefinedSelection;
     public ptupVerDocsPersona: FieldDefinedSelection;
     public ptupVerContratoNovedad: FieldDefinedSelection;
-    public ptValidadorUsuarios: FieldDefinedSelection;
 
     /**
      * Component constructor
@@ -59,7 +58,6 @@ export class AsesorSIUuTMODIFICARASESORComponent extends AbstractServiceIU imple
         this.ptupVerDBasicosPersona = new FieldDefinedSelection(this.langMng);
         this.ptupVerDocsPersona = new FieldDefinedSelection(this.langMng);
         this.ptupVerContratoNovedad = new FieldDefinedSelection(this.langMng);
-        this.ptValidadorUsuarios = new FieldDefinedSelection(this.langMng);
 
     }
 
@@ -169,17 +167,6 @@ export class AsesorSIUuTMODIFICARASESORComponent extends AbstractServiceIU imple
         this.ptupVerContratoNovedad.value = false;
         this.ptupVerContratoNovedad.assignCSS();
         this.fields.push(this.ptupVerContratoNovedad);
-
-        this.ptValidadorUsuarios.nameInRequest = 'ptvalidadorusuarios';
-        this.ptValidadorUsuarios.alias = this.langMng.translateText(
-            'cls_Asesor_svc_TMODIFICARASESOR_inArg_ptValidadorUsuarios',
-            'Acceso validador usuarios');
-        this.ptValidadorUsuarios.mandatory = true;
-        this.ptValidadorUsuarios.dataType = Field.dtBool;
-        this.ptValidadorUsuarios.options = DefinedSelections.DS_SINO;
-        this.ptValidadorUsuarios.value = false;
-        this.ptValidadorUsuarios.assignCSS();
-        this.fields.push(this.ptValidadorUsuarios);
     }
 
     /**
@@ -275,7 +262,7 @@ export class AsesorSIUuTMODIFICARASESORComponent extends AbstractServiceIU imple
         this.cacheDependencyRules.counter++;
         this.addQueryInstanceFromField(this.puthisAsesor,
                 'moddbasicospersona,modificadirector,email,usuarioldap,esintegral,vercontratonovedad,verdbasicospersona' +
-                ',verdocidentificacionpersona,accesovalidadorusuarios');
+                ',verdocidentificacionpersona');
         this.notifyCallToTheBackEnd();
         this.cacheDependencyRules.searchAll().then(() => {
             this.notifyAnswerFromToTheBackEnd();
@@ -313,8 +300,6 @@ export class AsesorSIUuTMODIFICARASESORComponent extends AbstractServiceIU imple
             this.ptupVerDBasicosPersona.setValue(this.util.getBool(varputhisasesor.get('verdbasicospersona')));
             // pt_pVerDocsPersona.SetValue( v.verdocidentificacionpersona )
             this.ptupVerDocsPersona.setValue(this.util.getBool(varputhisasesor.get('verdocidentificacionpersona')));
-            // ptValidadorUsuarios.SetValue( v.accesovalidadorusuarios )
-            this.ptValidadorUsuarios.setValue(this.util.getBool(varputhisasesor.get('accesovalidadorusuarios')));
         }
         this.executePendingDependencyRules();
         this.changeDetectorRef.markForCheck();

@@ -25,7 +25,6 @@ export class AsesorPIUuDirectoresComponent extends AbstractPIU {
     private readonly dsvercontratonovedad = 'Ver contrato en Novedades';
     private readonly dsmoddbasicospersona = 'Puede modificar persona';
     private readonly dsmodificadirector = 'Modifica director?';
-    private readonly dsaccesovalidadorusuarios = 'Acceso validador usuarios';
     private readonly dscodjefe = 'Cod. Director';
     private readonly dssucursalddescripcion = 'Sucursal';
     private readonly dstipoidentificaciondnombrecorto = 'Tipo Doc.';
@@ -175,18 +174,6 @@ export class AsesorPIUuDirectoresComponent extends AbstractPIU {
         dsItem.alias = this.langMng.translateText(
             'cls_Asesor_ds_DS_Asesor_M_Directores_item_Clas_1431886233600794CjtoVis_6ICtjoVis_9',
             this.dsmodificadirector);
-        dsItem.agents = [ModelConstants.Admin.name, ModelConstants.Superadmin.name];
-        dsItem.options = DefinedSelections.DS_SINO;
-        this.displaySet.push(dsItem);
-
-        dsItem = new DisplaySetItem();
-        dsItem.idXML = 'Clas_1431886233600794CjtoVis_6ICtjoVis_22';
-        dsItem.name = 'accesovalidadorusuarios';
-        dsItem.field = 'accesovalidadorusuarios';
-        dsItem.type = Field.dtBool;
-        dsItem.alias = this.langMng.translateText(
-            'cls_Asesor_ds_DS_Asesor_M_Directores_item_Clas_1431886233600794CjtoVis_6ICtjoVis_22',
-            this.dsaccesovalidadorusuarios);
         dsItem.agents = [ModelConstants.Admin.name, ModelConstants.Superadmin.name];
         dsItem.options = DefinedSelections.DS_SINO;
         this.displaySet.push(dsItem);

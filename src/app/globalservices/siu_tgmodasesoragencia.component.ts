@@ -38,7 +38,6 @@ export class GSSIUuTGMODASESORAGENCIAComponent extends AbstractServiceIU impleme
     public ptupVerDBasicosPersona: FieldDefinedSelection;
     public ptupVerDocsPersona: FieldDefinedSelection;
     public ptupVerContratoNovedad: FieldDefinedSelection;
-    public ptValidadorUsuarios: FieldDefinedSelection;
 
     /**
      * Component constructor
@@ -79,7 +78,6 @@ export class GSSIUuTGMODASESORAGENCIAComponent extends AbstractServiceIU impleme
         this.ptupVerDBasicosPersona = new FieldDefinedSelection(this.langMng);
         this.ptupVerDocsPersona = new FieldDefinedSelection(this.langMng);
         this.ptupVerContratoNovedad = new FieldDefinedSelection(this.langMng);
-        this.ptValidadorUsuarios = new FieldDefinedSelection(this.langMng);
     }
 
     public ngOnInit(): void {
@@ -255,17 +253,6 @@ export class GSSIUuTGMODASESORAGENCIAComponent extends AbstractServiceIU impleme
         this.ptupVerContratoNovedad.value = false;
         this.ptupVerContratoNovedad.assignCSS();
         this.fields.push(this.ptupVerContratoNovedad);
-
-        this.ptValidadorUsuarios.nameInRequest = 'ptvalidadorusuarios';
-        this.ptValidadorUsuarios.alias = this.langMng.translateText(
-            'gs_TGMODASESORAGENCIA_inArg_ptValidadorUsuarios',
-            'Acceso validador usuarios');
-        this.ptValidadorUsuarios.mandatory = true;
-        this.ptValidadorUsuarios.dataType = Field.dtBool;
-        this.ptValidadorUsuarios.options = DefinedSelections.DS_SINO;
-        this.ptValidadorUsuarios.value = false;
-        this.ptValidadorUsuarios.assignCSS();
-        this.fields.push(this.ptValidadorUsuarios);
     }
 
     /**
@@ -380,7 +367,7 @@ export class GSSIUuTGMODASESORAGENCIAComponent extends AbstractServiceIU impleme
         this.addQueryInstanceFromField(this.ptuputhisAsesor,
                 'moddbasicospersona,primerapellido,primernombre,segundoapellido,segundonombre,usuario,modificadirector,email,usuarioldap' +
                 ',sucursal.Codigo,tipoidentificacion.Codigo,numidentificacion,vercontratonovedad,verdbasicospersona' +
-                ',verdocidentificacionpersona,accesovalidadorusuarios');
+                ',verdocidentificacionpersona');
         this.notifyCallToTheBackEnd();
         this.cacheDependencyRules.searchAll().then(() => {
             this.notifyAnswerFromToTheBackEnd();
@@ -438,8 +425,6 @@ export class GSSIUuTGMODASESORAGENCIAComponent extends AbstractServiceIU impleme
             this.ptupVerDBasicosPersona.setValue(this.util.getBool(varptuputhisasesor.get('verdbasicospersona')));
             // pt_pVerDocsPersona.SetValue( v.verdocidentificacionpersona )
             this.ptupVerDocsPersona.setValue(this.util.getBool(varptuputhisasesor.get('verdocidentificacionpersona')));
-            // ptValidadorUsuarios.SetValue( v.accesovalidadorusuarios )
-            this.ptValidadorUsuarios.setValue(this.util.getBool(varptuputhisasesor.get('accesovalidadorusuarios')));
         }
         this.executePendingDependencyRules();
         this.changeDetectorRef.markForCheck();
@@ -679,8 +664,7 @@ export class GSSIUuTGMODASESORAGENCIAComponent extends AbstractServiceIU impleme
                 this.ptupModificaDirector.visible ||
                 this.ptupVerDBasicosPersona.visible ||
                 this.ptupVerDocsPersona.visible ||
-                this.ptupVerContratoNovedad.visible ||
-                this.ptValidadorUsuarios.visible;
+                this.ptupVerContratoNovedad.visible;
         }
         return isVisible;
     }

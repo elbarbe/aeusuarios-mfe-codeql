@@ -187,21 +187,19 @@ export class GlobalServicesServices extends AbstractServices {
      * @param ptupVerDBasicosPersonaInArg Mandatory argument 'pt_pVerDBasicosPersona'
      * @param ptupVerDocsPersonaInArg Mandatory argument 'pt_pVerDocsPersona'
      * @param ptupVerContratoNovedadInArg Mandatory argument 'pt_pVerContratoNovedad'
-     * @param ptValidadorUsuariosInArg Mandatory argument 'ptValidadorUsuarios'
      */
     public tGMODASESORAGENCIA(
         ptuputhisAsesorInArg: any, ptupuModDBasicosPersonaInArg: boolean, ptupModificaDirectorInArg: boolean,
         ptuptUsuarioLDAPInArg: string, ptuptEmailInArg: string, ptupuPrimerNombreInArg: string, ptupuSegundoNombreInArg: string,
         ptupuPrimerApellidoInArg: string, ptupuSegundoApellidoInArg: string, ptupeNumUsuarioInArg: string, ptuptSucursalInArg: any,
         ptuptTipoIdentificacionInArg: any, ptuptNumIdentificacionInArg: string, ptupVerDBasicosPersonaInArg: boolean,
-        ptupVerDocsPersonaInArg: boolean, ptupVerContratoNovedadInArg: boolean,
-        ptValidadorUsuariosInArg: boolean): Promise<ErrorInformation | void> {
+        ptupVerDocsPersonaInArg: boolean, ptupVerContratoNovedadInArg: boolean): Promise<ErrorInformation | void> {
         const request: {
             pt_p_thisasesor_oid: any, pt_p_moddbasicospersona: boolean, pt_pmodificadirector: boolean, pt_ptusuarioldap: string,
             pt_ptemail: string, pt_p_primernombre: string, pt_p_segundonombre: string, pt_p_primerapellido: string,
             pt_p_segundoapellido: string, pt_penumusuario: string, pt_ptsucursal_oid: any, pt_pttipoidentificacion_json: any,
             pt_ptnumidentificacion: string, pt_pverdbasicospersona: boolean, pt_pverdocspersona: boolean,
-            pt_pvercontratonovedad: boolean, ptvalidadorusuarios: boolean
+            pt_pvercontratonovedad: boolean
         } = {
             pt_p_thisasesor_oid: ptuputhisAsesorInArg, pt_p_moddbasicospersona: ptupuModDBasicosPersonaInArg,
             pt_pmodificadirector: ptupModificaDirectorInArg, pt_ptusuarioldap: ptuptUsuarioLDAPInArg, pt_ptemail: ptuptEmailInArg,
@@ -210,8 +208,7 @@ export class GlobalServicesServices extends AbstractServices {
             pt_penumusuario: ptupeNumUsuarioInArg, pt_ptsucursal_oid: ptuptSucursalInArg,
             pt_pttipoidentificacion_json: ptuptTipoIdentificacionInArg ? JSON.stringify(ptuptTipoIdentificacionInArg) : '',
             pt_ptnumidentificacion: ptuptNumIdentificacionInArg, pt_pverdbasicospersona: ptupVerDBasicosPersonaInArg,
-            pt_pverdocspersona: ptupVerDocsPersonaInArg, pt_pvercontratonovedad: ptupVerContratoNovedadInArg,
-            ptvalidadorusuarios: ptValidadorUsuariosInArg
+            pt_pverdocspersona: ptupVerDocsPersonaInArg, pt_pvercontratonovedad: ptupVerContratoNovedadInArg
         };
         return new Promise<ErrorInformation | void> ((resolve, reject) => {
              this.callService(this.tGMODASESORAGENCIASrvName, request).then((response: any) => {
