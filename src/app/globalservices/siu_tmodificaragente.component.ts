@@ -322,6 +322,9 @@ export class GSSIUuTMODIFICARAGENTEComponent extends AbstractServiceIU implement
             this.ptupuSegundoApellido.setValue(varptuputhisagente.get('segundoapellido'));
             // pt_p_SegundoNombre.SetValue( v.segundonombre )
             this.ptupuSegundoNombre.setValue(varptuputhisagente.get('segundonombre'));
+            // pt_NuevoRol.SetActive( FALSE )
+            this.ptuNuevoRol.enabled = false;
+            this.executeDependecyRulesptunuevorol('SetActive', true);
         }
         this.executePendingDependencyRules();
         this.changeDetectorRef.markForCheck();
