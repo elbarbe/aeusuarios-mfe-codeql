@@ -8,7 +8,8 @@
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent" [ngClass]="{ 'show': menuOpen }">
             <ul class="navbar-nav me-auto">
-                <li class="nav-item dropdown" *ngIf="isNodeVisible('Vis_1716557447168160NodoJer_2',['Admin','SuperAdmin','Funcionario'])">
+                <li class="nav-item dropdown"
+                    *ngIf="isNodeVisible('Vis_1716557447168160NodoJer_2',['Admin','SuperAdmin','Funcionario'])">
                     <a class="nav-link dropdown-toggle" id="hat0" data-bs-toggle="dropdown"
                         aria-expanded="false" aria-haspopup="true">
                         {{langMng.translateText('_fixed.hat.0', 'Usuarios')}}
