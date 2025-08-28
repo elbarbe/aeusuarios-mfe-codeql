@@ -37,6 +37,9 @@ export class AfiliacionesPIUuAfiliacionesuNullComponent extends AbstractPIU impl
         super(appGlobalInfo, util, changeDetectorRef, langMng, condNavMng);
         this.idXML = 'Clas_1434549485568784UIPobCl_2';
         this.className = ModelConstants.Afiliaciones.name;
+        this.classAlias = this.langMng.translateText('cls_Afiliaciones',
+            'Afiliaciones');
+        this.supplementaryInfoAtt.push('usuarioldap');
         this.iuName = ModelConstants.Afiliaciones.piuuafiliacionesunull;
         this.setUserVisibility(this.appGlobalInfo.getLoggedUserInfo().isIUVisible(this.idXML, ['Funcionario', 'Admin', 'SuperAdmin']));
         this.title = this.langMng.translateText('cls_Afiliaciones_piu_PIU_Afiliaciones_Null',

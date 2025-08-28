@@ -43,6 +43,8 @@ export class GestorPIUuGestoresComponent extends AbstractPIU implements OnInit {
         super(appGlobalInfo, util, changeDetectorRef, langMng, condNavMng);
         this.idXML = 'Clas_1624269783040558UIPobCl_1';
         this.className = ModelConstants.Gestor.name;
+        this.classAlias = this.langMng.translateText('cls_Gestor',
+            'Gestor');
         this.iuName = ModelConstants.Gestor.piuugestores;
         this.setUserVisibility(this.appGlobalInfo.getLoggedUserInfo().isIUVisible(this.idXML, ['Funcionario', 'Admin', 'SuperAdmin']));
         this.title = this.langMng.translateText('cls_Gestor_piu_PIU_Gestores',

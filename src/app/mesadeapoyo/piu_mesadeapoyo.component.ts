@@ -43,6 +43,8 @@ export class MesaDeApoyoPIUuMesaDeApoyoComponent extends AbstractPIU implements 
         super(appGlobalInfo, util, changeDetectorRef, langMng, condNavMng);
         this.idXML = 'Clas_1624269783040652UIPobCl_1';
         this.className = ModelConstants.Mesadeapoyo.name;
+        this.classAlias = this.langMng.translateText('cls_MesaDeApoyo',
+            'Mesa de apoyo');
         this.iuName = ModelConstants.Mesadeapoyo.piuumesadeapoyo;
         this.setUserVisibility(this.appGlobalInfo.getLoggedUserInfo().isIUVisible(this.idXML, ['Funcionario', 'Admin', 'SuperAdmin']));
         this.title = this.langMng.translateText('cls_MesaDeApoyo_piu_PIU_MesaDeApoyo',

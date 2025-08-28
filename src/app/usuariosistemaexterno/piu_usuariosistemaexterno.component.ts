@@ -38,6 +38,8 @@ export class UsuarioSistemaExternoPIUuUsuarioSistemaExternoComponent extends Abs
         super(appGlobalInfo, util, changeDetectorRef, langMng, condNavMng);
         this.idXML = 'Clas_1738059022336227UIPobCl_1';
         this.className = ModelConstants.Usuariosistemaexterno.name;
+        this.classAlias = this.langMng.translateText('cls_UsuarioSistemaExterno',
+            'Sistema Externo');
         this.iuName = ModelConstants.Usuariosistemaexterno.piuuusuariosistemaexterno;
         this.setUserVisibility(this.appGlobalInfo.getLoggedUserInfo().isIUVisible(this.idXML, ['Admin', 'SuperAdmin']));
         this.title = this.langMng.translateText('cls_UsuarioSistemaExterno_piu_PIU_UsuarioSistemaExterno',

@@ -42,6 +42,10 @@ export class AgentexProductoPIUuAgentexProductoComponent extends AbstractPIU imp
         super(appGlobalInfo, util, changeDetectorRef, langMng, condNavMng);
         this.idXML = 'Clas_1460560723968553UIPobCl_1';
         this.className = ModelConstants.Agentexproducto.name;
+        this.classAlias = this.langMng.translateText('cls_AgentexProducto',
+            'Agente x Producto');
+        this.supplementaryInfoAtt.push('asesor.drvnombrecompleto');
+        this.supplementaryInfoAtt.push('productot.descripcion');
         this.iuName = ModelConstants.Agentexproducto.piuuagentexproducto;
         this.setUserVisibility(this.appGlobalInfo.getLoggedUserInfo().isIUVisible(this.idXML, ['Admin', 'SuperAdmin']));
         this.title = this.langMng.translateText('cls_AgentexProducto_piu_PIU_AgentexProducto',

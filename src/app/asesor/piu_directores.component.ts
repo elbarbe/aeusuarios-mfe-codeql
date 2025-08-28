@@ -52,6 +52,11 @@ export class AsesorPIUuDirectoresComponent extends AbstractPIU {
         super(appGlobalInfo, util, changeDetectorRef, langMng, condNavMng);
         this.idXML = 'Clas_1431886233600794UIPobCl_4';
         this.className = ModelConstants.Asesor.name;
+        this.classAlias = this.langMng.translateText('cls_Asesor',
+            'Asesor');
+        this.supplementaryInfoAtt.push('primernombre');
+        this.supplementaryInfoAtt.push('segundonombre');
+        this.supplementaryInfoAtt.push('primerapellido');
         this.iuName = 'PIU_Directores';
         this.setUserVisibility(this.appGlobalInfo.getLoggedUserInfo().isIUVisible(this.idXML, ['Funcionario', 'Admin', 'SuperAdmin']));
         this.title = this.langMng.translateText('cls_Asesor_piu_PIU_Directores',
@@ -223,7 +228,7 @@ export class AsesorPIUuDirectoresComponent extends AbstractPIU {
         dsItem.alias = this.langMng.translateText(
             'cls_Asesor_ds_DS_Asesor_M_Directores_item_Clas_1431886233600794CjtoVis_6ICtjoVis_14',
             this.dsnumidentificacion);
-        dsItem.agents = [ModelConstants.Admin.name, ModelConstants.Superadmin.name];
+        dsItem.agents = [ModelConstants.Funcionario.name, ModelConstants.Admin.name, ModelConstants.Superadmin.name];
         this.displaySet.push(dsItem);
 
         dsItem = new DisplaySetItem();

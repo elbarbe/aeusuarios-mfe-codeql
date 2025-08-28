@@ -40,6 +40,8 @@ export class LogFuncionarioPIUuLogFuncionarioComponent extends AbstractPIU imple
         super(appGlobalInfo, util, changeDetectorRef, langMng, condNavMng);
         this.idXML = 'Clas_1586853183488419UIPobCl_1';
         this.className = ModelConstants.Logfuncionario.name;
+        this.classAlias = this.langMng.translateText('cls_LogFuncionario',
+            'Histórico Funcionario');
         this.iuName = ModelConstants.Logfuncionario.piuulogfuncionario;
         this.setUserVisibility(this.appGlobalInfo.getLoggedUserInfo().isIUVisible(this.idXML, ['Admin', 'SuperAdmin']));
         this.title = this.langMng.translateText('cls_LogFuncionario_piu_PIU_LogFuncionario',

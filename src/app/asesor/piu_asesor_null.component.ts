@@ -37,6 +37,11 @@ export class AsesorPIUuAsesoruNullComponent extends AbstractPIU implements OnIni
         super(appGlobalInfo, util, changeDetectorRef, langMng, condNavMng);
         this.idXML = 'Clas_1431886233600794UIPobCl_7';
         this.className = ModelConstants.Asesor.name;
+        this.classAlias = this.langMng.translateText('cls_Asesor',
+            'Asesor');
+        this.supplementaryInfoAtt.push('primernombre');
+        this.supplementaryInfoAtt.push('segundonombre');
+        this.supplementaryInfoAtt.push('primerapellido');
         this.iuName = ModelConstants.Asesor.piuuasesorunull;
         this.setUserVisibility(this.appGlobalInfo.getLoggedUserInfo().isIUVisible(this.idXML, ['Funcionario', 'Admin', 'SuperAdmin']));
         this.title = this.langMng.translateText('cls_Asesor_piu_PIU_Asesor_Null',

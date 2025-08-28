@@ -41,6 +41,8 @@ export class LogHistoricoPlanesPIUuLogHistoricoPlanesComponent extends AbstractP
         super(appGlobalInfo, util, changeDetectorRef, langMng, condNavMng);
         this.idXML = 'Clas_1624004755456313UIPobCl_1';
         this.className = ModelConstants.Loghistoricoplanes.name;
+        this.classAlias = this.langMng.translateText('cls_LogHistoricoPlanes',
+            'Histórico Planes');
         this.iuName = ModelConstants.Loghistoricoplanes.piuuloghistoricoplanes;
         this.setUserVisibility(this.appGlobalInfo.getLoggedUserInfo().isIUVisible(this.idXML, ['Admin', 'SuperAdmin']));
         this.title = this.langMng.translateText('cls_LogHistoricoPlanes_piu_PIU_LogHistoricoPlanes',

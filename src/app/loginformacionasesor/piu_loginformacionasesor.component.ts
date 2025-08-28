@@ -42,6 +42,8 @@ export class LogInformacionAsesorPIUuLogInformacionAsesorComponent extends Abstr
         super(appGlobalInfo, util, changeDetectorRef, langMng, condNavMng);
         this.idXML = 'Clas_1623836459008779UIPobCl_1';
         this.className = ModelConstants.Loginformacionasesor.name;
+        this.classAlias = this.langMng.translateText('cls_LogInformacionAsesor',
+            'Historico Información');
         this.iuName = ModelConstants.Loginformacionasesor.piuuloginformacionasesor;
         this.setUserVisibility(this.appGlobalInfo.getLoggedUserInfo().isIUVisible(this.idXML, ['Admin', 'SuperAdmin']));
         this.title = this.langMng.translateText('cls_LogInformacionAsesor_piu_PIU_LogInformacionAsesor',

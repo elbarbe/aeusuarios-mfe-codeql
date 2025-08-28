@@ -33,6 +33,11 @@ export class AsesorIIUuAsesorProductosComponent extends AbstractIIU {
         super(appGlobalInfo, util, changeDetectorRef, condNavMng);
         this.idXML = 'Clas_1431886233600794UIInst_2';
         this.className = ModelConstants.Asesor.name;
+        this.classAlias = this.langMng.translateText('cls_Asesor',
+            'Asesor');
+        this.supplementaryInfoAtt.push('primernombre');
+        this.supplementaryInfoAtt.push('segundonombre');
+        this.supplementaryInfoAtt.push('primerapellido');
         this.setUserVisibility(this.appGlobalInfo.getLoggedUserInfo().isIUVisible(this.idXML, ['Funcionario', 'Admin', 'SuperAdmin']));
         this.title = this.langMng.translateText('cls_Asesor_iiu_IIU_AsesorProductos',
             'Asesor');

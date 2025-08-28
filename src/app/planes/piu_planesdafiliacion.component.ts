@@ -39,6 +39,9 @@ export class PlanesPIUuPlanesDAfiliacionComponent extends AbstractPIU {
         super(appGlobalInfo, util, changeDetectorRef, langMng, condNavMng);
         this.idXML = 'Clas_1431695392768502UIPobCl_2';
         this.className = ModelConstants.Planes.name;
+        this.classAlias = this.langMng.translateText('cls_Planes',
+            'Plan');
+        this.supplementaryInfoAtt.push('nombre');
         this.iuName = 'PIU_PlanesDAfiliacion';
         this.setUserVisibility(this.appGlobalInfo.getLoggedUserInfo().isIUVisible(this.idXML, ['Admin', 'SuperAdmin']));
         this.title = this.langMng.translateText('cls_Planes_piu_PIU_PlanesDAfiliacion',

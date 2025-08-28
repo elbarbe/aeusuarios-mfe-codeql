@@ -36,6 +36,9 @@ export class AfiliacionesIIUuAfiliacionesMPlanesComponent extends AbstractIIU {
         super(appGlobalInfo, util, changeDetectorRef, condNavMng);
         this.idXML = 'Clas_1434549485568784UIInst_1';
         this.className = ModelConstants.Afiliaciones.name;
+        this.classAlias = this.langMng.translateText('cls_Afiliaciones',
+            'Afiliaciones');
+        this.supplementaryInfoAtt.push('usuarioldap');
         this.setUserVisibility(this.appGlobalInfo.getLoggedUserInfo().isIUVisible(this.idXML, ['Funcionario', 'Admin', 'SuperAdmin']));
         this.title = this.langMng.translateText('cls_Afiliaciones_iiu_IIU_AfiliacionesMPlanes',
             'Afiliación');
