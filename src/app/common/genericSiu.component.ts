@@ -349,7 +349,7 @@ export class GenericSiuComponent implements OnInit {
                     'cls_Asesor_svc_TDELETE_inArg_p_thisAsesor',
                     'Asesor');
                 this.argSupInfAttNames = 'primernombre,segundonombre,primerapellido';
-                this.argSupInfAttTypes = [Field.dtString,Field.dtString,Field.dtString];
+                this.argSupInfAttTypes = [Field.dtString, Field.dtString, Field.dtString];
                 siuFound = true;
                 break;
         }
@@ -398,7 +398,7 @@ export class GenericSiuComponent implements OnInit {
                     'cls_AgentexProducto_svc_eliminar_inArg_p_thisAgentexProducto',
                     'Agente x Producto');
                 this.argSupInfAttNames = 'asesor.drvnombrecompleto,productot.descripcion';
-                this.argSupInfAttTypes = [Field.dtString,Field.dtString];
+                this.argSupInfAttTypes = [Field.dtString, Field.dtString];
                 siuFound = true;
                 break;
         }
