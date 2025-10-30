@@ -49,7 +49,7 @@ export class AsesorSIUuTMODIFICARASESORComponent extends AbstractServiceIU imple
             'Modificar asesor');
 
         // Create inbound argument components
-        this.puthisAsesor = new FieldOVLenseSearch(this.langMng);
+        this.puthisAsesor = new FieldOVLenseSearch(this.langMng, this.util);
         this.ptupuModDBasicosPersona = new FieldDefinedSelection(this.langMng);
         this.pModificaDirector = new FieldDefinedSelection(this.langMng);
         this.ptUsuarioLDAP = new Field(this.langMng);
@@ -304,44 +304,20 @@ export class AsesorSIUuTMODIFICARASESORComponent extends AbstractServiceIU imple
         this.executePendingDependencyRules();
         this.changeDetectorRef.markForCheck();
     }
-
     /**
      * Process the change in the p_thisAsesor lense search argument
      */
     public onputhisasesorChange(): void {
-
-        const searchText = this.puthisAsesor.text;
-        if (searchText && searchText !== '') {
-            if (searchText !== this.puthisAsesor.lastText) {
-                this.puthisAsesor.removeCSSClass('noResultsLenseSearch');
-                this.puthisAsesor.lastText = searchText;
-                this.util.searchLenseSearch(ModelConstants.Asesor.name, 'IC_Asesor', searchText, [], null).then(
-                        (response: any) => {
-                            this.puthisAsesor.removeCSSClass('noResultsLenseSearch');
-                            this.puthisAsesor.searchResults = response.results;
-                            if (this.puthisAsesor.searchResults &&
-                                this.puthisAsesor.searchResults.length === 0) {
-                                this.puthisAsesor.addCSSClass('noResultsLenseSearch');
-                            }
-                            if (this.puthisAsesor.searchResults &&
-                                this.puthisAsesor.searchResults.length === 1) {
-                                this.processputhisasesorSelected(0);
-                            }
-                            this.changeDetectorRef.markForCheck();
-                        },
-                        (response: any) => {
-                            this.puthisAsesor.removeCSSClass('noResultsLenseSearch');
-                            this.puthisAsesor.searchResults = [];
-                            this.util.addErrorMessage(response.message);
-                            this.changeDetectorRef.markForCheck();
-                        });
+        this.executeLenseSearch(this.puthisAsesor, ModelConstants.Asesor.name, 'IC_Asesor',
+            []).then( (foundInstances: number) => {
+            if (foundInstances === -1) {
+                this.cleanputhisasesor();
             }
-        } else {
-            this.puthisAsesor.removeCSSClass('noResultsLenseSearch');
-            this.puthisAsesor.searchResults = [];
-            this.cleanputhisasesor();
-        }
-
+            if (foundInstances === 1) {
+                this.processputhisasesorSelected(0);
+            }
+            this.changeDetectorRef.markForCheck();
+        });
         this.changeDetectorRef.markForCheck();
     }
 
@@ -361,7 +337,7 @@ export class AsesorSIUuTMODIFICARASESORComponent extends AbstractServiceIU imple
                 this.puthisAsesor.cleanSelectedInstances();
             }
             selectedInstance.oid = JSON.parse(selectedInstance.jsonOID);
-            this.puthisAsesor.getSelectedInstances().push(selectedInstance);
+            this.puthisAsesor.addInstances(selectedInstance);
         }
         this.executeDependecyRulesputhisasesor('SetValue', false);
         this.changeDetectorRef.markForCheck();

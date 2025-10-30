@@ -42,7 +42,7 @@ export class FuncionarioSIUuTCAMBIARDISPONIBLEComponent extends AbstractServiceI
             'Marcar disponibilidad');
 
         // Create inbound argument components
-        this.puthisFuncionario = new FieldOVLenseSearch(this.langMng);
+        this.puthisFuncionario = new FieldOVLenseSearch(this.langMng, this.util);
         this.ptupeDisponible = new FieldDefinedSelection(this.langMng);
 
     }
@@ -201,44 +201,20 @@ export class FuncionarioSIUuTCAMBIARDISPONIBLEComponent extends AbstractServiceI
         this.executePendingDependencyRules();
         this.changeDetectorRef.markForCheck();
     }
-
     /**
      * Process the change in the p_thisFuncionario lense search argument
      */
     public onputhisfuncionarioChange(): void {
-
-        const searchText = this.puthisFuncionario.text;
-        if (searchText && searchText !== '') {
-            if (searchText !== this.puthisFuncionario.lastText) {
-                this.puthisFuncionario.removeCSSClass('noResultsLenseSearch');
-                this.puthisFuncionario.lastText = searchText;
-                this.util.searchLenseSearch(ModelConstants.Funcionario.name, 'IC_Agente', searchText, [], null).then(
-                        (response: any) => {
-                            this.puthisFuncionario.removeCSSClass('noResultsLenseSearch');
-                            this.puthisFuncionario.searchResults = response.results;
-                            if (this.puthisFuncionario.searchResults &&
-                                this.puthisFuncionario.searchResults.length === 0) {
-                                this.puthisFuncionario.addCSSClass('noResultsLenseSearch');
-                            }
-                            if (this.puthisFuncionario.searchResults &&
-                                this.puthisFuncionario.searchResults.length === 1) {
-                                this.processputhisfuncionarioSelected(0);
-                            }
-                            this.changeDetectorRef.markForCheck();
-                        },
-                        (response: any) => {
-                            this.puthisFuncionario.removeCSSClass('noResultsLenseSearch');
-                            this.puthisFuncionario.searchResults = [];
-                            this.util.addErrorMessage(response.message);
-                            this.changeDetectorRef.markForCheck();
-                        });
+        this.executeLenseSearch(this.puthisFuncionario, ModelConstants.Funcionario.name, 'IC_Agente',
+            []).then( (foundInstances: number) => {
+            if (foundInstances === -1) {
+                this.cleanputhisfuncionario();
             }
-        } else {
-            this.puthisFuncionario.removeCSSClass('noResultsLenseSearch');
-            this.puthisFuncionario.searchResults = [];
-            this.cleanputhisfuncionario();
-        }
-
+            if (foundInstances === 1) {
+                this.processputhisfuncionarioSelected(0);
+            }
+            this.changeDetectorRef.markForCheck();
+        });
         this.changeDetectorRef.markForCheck();
     }
 
@@ -258,7 +234,7 @@ export class FuncionarioSIUuTCAMBIARDISPONIBLEComponent extends AbstractServiceI
                 this.puthisFuncionario.cleanSelectedInstances();
             }
             selectedInstance.oid = JSON.parse(selectedInstance.jsonOID);
-            this.puthisFuncionario.getSelectedInstances().push(selectedInstance);
+            this.puthisFuncionario.addInstances(selectedInstance);
         }
         this.executeDependecyRulesputhisfuncionario('SetValue', false);
         this.changeDetectorRef.markForCheck();

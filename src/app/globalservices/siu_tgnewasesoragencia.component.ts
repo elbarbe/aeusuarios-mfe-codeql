@@ -58,7 +58,7 @@ export class GSSIUuTGNEWASESORAGENCIAComponent extends AbstractServiceIU impleme
             'Nuevo asesor de agencia');
 
         // Create inbound argument components
-        this.ptupuagrSucursal = new FieldOVLenseSearch(this.langMng);
+        this.ptupuagrSucursal = new FieldOVLenseSearch(this.langMng, this.util);
         this.ptupuatrUsuario = new Field(this.langMng);
         this.ptupuatrPrimerNombre = new Field(this.langMng);
         this.ptupuatrSegundoNombre = new Field(this.langMng);
@@ -292,44 +292,20 @@ export class GSSIUuTGNEWASESORAGENCIAComponent extends AbstractServiceIU impleme
             });
         }
     }
-
     /**
      * Process the change in the pt_p_agrSucursal lense search argument
      */
     public onptupuagrsucursalChange(): void {
-
-        const searchText = this.ptupuagrSucursal.text;
-        if (searchText && searchText !== '') {
-            if (searchText !== this.ptupuagrSucursal.lastText) {
-                this.ptupuagrSucursal.removeCSSClass('noResultsLenseSearch');
-                this.ptupuagrSucursal.lastText = searchText;
-                this.util.searchLenseSearch(ModelConstants.Sucursal.name, 'IC_Sucursal', searchText, [], null).then(
-                        (response: any) => {
-                            this.ptupuagrSucursal.removeCSSClass('noResultsLenseSearch');
-                            this.ptupuagrSucursal.searchResults = response.results;
-                            if (this.ptupuagrSucursal.searchResults &&
-                                this.ptupuagrSucursal.searchResults.length === 0) {
-                                this.ptupuagrSucursal.addCSSClass('noResultsLenseSearch');
-                            }
-                            if (this.ptupuagrSucursal.searchResults &&
-                                this.ptupuagrSucursal.searchResults.length === 1) {
-                                this.processptupuagrsucursalSelected(0);
-                            }
-                            this.changeDetectorRef.markForCheck();
-                        },
-                        (response: any) => {
-                            this.ptupuagrSucursal.removeCSSClass('noResultsLenseSearch');
-                            this.ptupuagrSucursal.searchResults = [];
-                            this.util.addErrorMessage(response.message);
-                            this.changeDetectorRef.markForCheck();
-                        });
+        this.executeLenseSearch(this.ptupuagrSucursal, ModelConstants.Sucursal.name, 'IC_Sucursal',
+            []).then( (foundInstances: number) => {
+            if (foundInstances === -1) {
+                this.cleanptupuagrsucursal();
             }
-        } else {
-            this.ptupuagrSucursal.removeCSSClass('noResultsLenseSearch');
-            this.ptupuagrSucursal.searchResults = [];
-            this.cleanptupuagrsucursal();
-        }
-
+            if (foundInstances === 1) {
+                this.processptupuagrsucursalSelected(0);
+            }
+            this.changeDetectorRef.markForCheck();
+        });
         this.changeDetectorRef.markForCheck();
     }
 
@@ -349,7 +325,7 @@ export class GSSIUuTGNEWASESORAGENCIAComponent extends AbstractServiceIU impleme
                 this.ptupuagrSucursal.cleanSelectedInstances();
             }
             selectedInstance.oid = JSON.parse(selectedInstance.jsonOID);
-            this.ptupuagrSucursal.getSelectedInstances().push(selectedInstance);
+            this.ptupuagrSucursal.addInstances(selectedInstance);
         }
         this.executeDependecyRulesptupuagrsucursal('SetValue', false);
         this.changeDetectorRef.markForCheck();

@@ -41,8 +41,8 @@ export class AfiliacionesSIUuInsPlanComponent extends AbstractServiceIU implemen
             'Asociar Plan');
 
         // Create inbound argument components
-        this.puthisAfiliaciones = new FieldOVLenseSearch(this.langMng);
-        this.puevcPlanes = new FieldOVLenseSearch(this.langMng);
+        this.puthisAfiliaciones = new FieldOVLenseSearch(this.langMng, this.util);
+        this.puevcPlanes = new FieldOVLenseSearch(this.langMng, this.util);
 
     }
 
@@ -185,44 +185,20 @@ export class AfiliacionesSIUuInsPlanComponent extends AbstractServiceIU implemen
             });
         }
     }
-
     /**
      * Process the change in the p_thisAfiliaciones lense search argument
      */
     public onputhisafiliacionesChange(): void {
-
-        const searchText = this.puthisAfiliaciones.text;
-        if (searchText && searchText !== '') {
-            if (searchText !== this.puthisAfiliaciones.lastText) {
-                this.puthisAfiliaciones.removeCSSClass('noResultsLenseSearch');
-                this.puthisAfiliaciones.lastText = searchText;
-                this.util.searchLenseSearch(ModelConstants.Afiliaciones.name, 'SIAfiliaciones', searchText, [], null).then(
-                        (response: any) => {
-                            this.puthisAfiliaciones.removeCSSClass('noResultsLenseSearch');
-                            this.puthisAfiliaciones.searchResults = response.results;
-                            if (this.puthisAfiliaciones.searchResults &&
-                                this.puthisAfiliaciones.searchResults.length === 0) {
-                                this.puthisAfiliaciones.addCSSClass('noResultsLenseSearch');
-                            }
-                            if (this.puthisAfiliaciones.searchResults &&
-                                this.puthisAfiliaciones.searchResults.length === 1) {
-                                this.processputhisafiliacionesSelected(0);
-                            }
-                            this.changeDetectorRef.markForCheck();
-                        },
-                        (response: any) => {
-                            this.puthisAfiliaciones.removeCSSClass('noResultsLenseSearch');
-                            this.puthisAfiliaciones.searchResults = [];
-                            this.util.addErrorMessage(response.message);
-                            this.changeDetectorRef.markForCheck();
-                        });
+        this.executeLenseSearch(this.puthisAfiliaciones, ModelConstants.Afiliaciones.name, 'SIAfiliaciones',
+            []).then( (foundInstances: number) => {
+            if (foundInstances === -1) {
+                this.cleanputhisafiliaciones();
             }
-        } else {
-            this.puthisAfiliaciones.removeCSSClass('noResultsLenseSearch');
-            this.puthisAfiliaciones.searchResults = [];
-            this.cleanputhisafiliaciones();
-        }
-
+            if (foundInstances === 1) {
+                this.processputhisafiliacionesSelected(0);
+            }
+            this.changeDetectorRef.markForCheck();
+        });
         this.changeDetectorRef.markForCheck();
     }
 
@@ -242,7 +218,7 @@ export class AfiliacionesSIUuInsPlanComponent extends AbstractServiceIU implemen
                 this.puthisAfiliaciones.cleanSelectedInstances();
             }
             selectedInstance.oid = JSON.parse(selectedInstance.jsonOID);
-            this.puthisAfiliaciones.getSelectedInstances().push(selectedInstance);
+            this.puthisAfiliaciones.addInstances(selectedInstance);
         }
         this.executeDependecyRulesputhisafiliaciones('SetValue', false);
         this.changeDetectorRef.markForCheck();
@@ -305,47 +281,22 @@ export class AfiliacionesSIUuInsPlanComponent extends AbstractServiceIU implemen
             });
         }
     }
-
     /**
      * Process the change in the p_evcPlanes lense search argument
      */
     public onpuevcplanesChange(): void {
-
-        const searchText = this.puevcPlanes.text;
-        if (searchText && searchText !== '') {
-            if (searchText !== this.puevcPlanes.lastText) {
-                const navFilters: string[] = [];
-                navFilters.push('Afiliaciones_InsPlan_p_evcPlanes_NavFilter0');
-                this.puevcPlanes.removeCSSClass('noResultsLenseSearch');
-                this.puevcPlanes.lastText = searchText;
-                this.util.searchLenseSearch(ModelConstants.Planes.name, 'IC_Plan', searchText, navFilters,
-                    this.getNavigationFilterVariables()).then(
-                        (response: any) => {
-                            this.puevcPlanes.removeCSSClass('noResultsLenseSearch');
-                            this.puevcPlanes.searchResults = response.results;
-                            if (this.puevcPlanes.searchResults &&
-                                this.puevcPlanes.searchResults.length === 0) {
-                                this.puevcPlanes.addCSSClass('noResultsLenseSearch');
-                            }
-                            if (this.puevcPlanes.searchResults &&
-                                this.puevcPlanes.searchResults.length === 1) {
-                                this.processpuevcplanesSelected(0);
-                            }
-                            this.changeDetectorRef.markForCheck();
-                        },
-                        (response: any) => {
-                            this.puevcPlanes.removeCSSClass('noResultsLenseSearch');
-                            this.puevcPlanes.searchResults = [];
-                            this.util.addErrorMessage(response.message);
-                            this.changeDetectorRef.markForCheck();
-                        });
+        const navFilters: string[] = [];
+        navFilters.push('Afiliaciones_InsPlan_p_evcPlanes_NavFilter0');
+        this.executeLenseSearch(this.puevcPlanes, ModelConstants.Planes.name, 'IC_Plan',
+            navFilters).then( (foundInstances: number) => {
+            if (foundInstances === -1) {
+                this.cleanpuevcplanes();
             }
-        } else {
-            this.puevcPlanes.removeCSSClass('noResultsLenseSearch');
-            this.puevcPlanes.searchResults = [];
-            this.cleanpuevcplanes();
-        }
-
+            if (foundInstances === 1) {
+                this.processpuevcplanesSelected(0);
+            }
+            this.changeDetectorRef.markForCheck();
+        });
         this.changeDetectorRef.markForCheck();
     }
 
@@ -365,7 +316,7 @@ export class AfiliacionesSIUuInsPlanComponent extends AbstractServiceIU implemen
                 this.puevcPlanes.cleanSelectedInstances();
             }
             selectedInstance.oid = JSON.parse(selectedInstance.jsonOID);
-            this.puevcPlanes.getSelectedInstances().push(selectedInstance);
+            this.puevcPlanes.addInstances(selectedInstance);
         }
         this.executeDependecyRulespuevcplanes('SetValue', false);
         this.changeDetectorRef.markForCheck();

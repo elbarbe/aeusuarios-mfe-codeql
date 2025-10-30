@@ -61,10 +61,10 @@ export class GSSIUuTCREARAGENTEComponent extends AbstractServiceIU implements On
         this.ptupuatrSegundoNombre = new Field(this.langMng);
         this.ptupuatrPrimerApellido = new Field(this.langMng);
         this.ptupuatrSegundoApellido = new Field(this.langMng);
-        this.ptupuagrSucursal = new FieldOVLenseSearch(this.langMng);
+        this.ptupuagrSucursal = new FieldOVLenseSearch(this.langMng, this.util);
         this.ptupuatrUsuarioLDAP = new Field(this.langMng);
         this.ptupuatrEmail = new Field(this.langMng);
-        this.ptupuagrRegional = new FieldOVLenseSearch(this.langMng);
+        this.ptupuagrRegional = new FieldOVLenseSearch(this.langMng, this.util);
     }
 
     public ngOnInit(): void {
@@ -384,44 +384,20 @@ export class GSSIUuTCREARAGENTEComponent extends AbstractServiceIU implements On
             });
         }
     }
-
     /**
      * Process the change in the pt_p_agrSucursal lense search argument
      */
     public onptupuagrsucursalChange(): void {
-
-        const searchText = this.ptupuagrSucursal.text;
-        if (searchText && searchText !== '') {
-            if (searchText !== this.ptupuagrSucursal.lastText) {
-                this.ptupuagrSucursal.removeCSSClass('noResultsLenseSearch');
-                this.ptupuagrSucursal.lastText = searchText;
-                this.util.searchLenseSearch(ModelConstants.Sucursal.name, 'IC_Sucursal', searchText, [], null).then(
-                        (response: any) => {
-                            this.ptupuagrSucursal.removeCSSClass('noResultsLenseSearch');
-                            this.ptupuagrSucursal.searchResults = response.results;
-                            if (this.ptupuagrSucursal.searchResults &&
-                                this.ptupuagrSucursal.searchResults.length === 0) {
-                                this.ptupuagrSucursal.addCSSClass('noResultsLenseSearch');
-                            }
-                            if (this.ptupuagrSucursal.searchResults &&
-                                this.ptupuagrSucursal.searchResults.length === 1) {
-                                this.processptupuagrsucursalSelected(0);
-                            }
-                            this.changeDetectorRef.markForCheck();
-                        },
-                        (response: any) => {
-                            this.ptupuagrSucursal.removeCSSClass('noResultsLenseSearch');
-                            this.ptupuagrSucursal.searchResults = [];
-                            this.util.addErrorMessage(response.message);
-                            this.changeDetectorRef.markForCheck();
-                        });
+        this.executeLenseSearch(this.ptupuagrSucursal, ModelConstants.Sucursal.name, 'IC_Sucursal',
+            []).then( (foundInstances: number) => {
+            if (foundInstances === -1) {
+                this.cleanptupuagrsucursal();
             }
-        } else {
-            this.ptupuagrSucursal.removeCSSClass('noResultsLenseSearch');
-            this.ptupuagrSucursal.searchResults = [];
-            this.cleanptupuagrsucursal();
-        }
-
+            if (foundInstances === 1) {
+                this.processptupuagrsucursalSelected(0);
+            }
+            this.changeDetectorRef.markForCheck();
+        });
         this.changeDetectorRef.markForCheck();
     }
 
@@ -441,7 +417,7 @@ export class GSSIUuTCREARAGENTEComponent extends AbstractServiceIU implements On
                 this.ptupuagrSucursal.cleanSelectedInstances();
             }
             selectedInstance.oid = JSON.parse(selectedInstance.jsonOID);
-            this.ptupuagrSucursal.getSelectedInstances().push(selectedInstance);
+            this.ptupuagrSucursal.addInstances(selectedInstance);
         }
         this.executeDependecyRulesptupuagrsucursal('SetValue', false);
         this.changeDetectorRef.markForCheck();
@@ -504,44 +480,20 @@ export class GSSIUuTCREARAGENTEComponent extends AbstractServiceIU implements On
             });
         }
     }
-
     /**
      * Process the change in the pt_p_agrRegional lense search argument
      */
     public onptupuagrregionalChange(): void {
-
-        const searchText = this.ptupuagrRegional.text;
-        if (searchText && searchText !== '') {
-            if (searchText !== this.ptupuagrRegional.lastText) {
-                this.ptupuagrRegional.removeCSSClass('noResultsLenseSearch');
-                this.ptupuagrRegional.lastText = searchText;
-                this.util.searchLenseSearch(ModelConstants.Regional.name, 'IC_Regional', searchText, [], null).then(
-                        (response: any) => {
-                            this.ptupuagrRegional.removeCSSClass('noResultsLenseSearch');
-                            this.ptupuagrRegional.searchResults = response.results;
-                            if (this.ptupuagrRegional.searchResults &&
-                                this.ptupuagrRegional.searchResults.length === 0) {
-                                this.ptupuagrRegional.addCSSClass('noResultsLenseSearch');
-                            }
-                            if (this.ptupuagrRegional.searchResults &&
-                                this.ptupuagrRegional.searchResults.length === 1) {
-                                this.processptupuagrregionalSelected(0);
-                            }
-                            this.changeDetectorRef.markForCheck();
-                        },
-                        (response: any) => {
-                            this.ptupuagrRegional.removeCSSClass('noResultsLenseSearch');
-                            this.ptupuagrRegional.searchResults = [];
-                            this.util.addErrorMessage(response.message);
-                            this.changeDetectorRef.markForCheck();
-                        });
+        this.executeLenseSearch(this.ptupuagrRegional, ModelConstants.Regional.name, 'IC_Regional',
+            []).then( (foundInstances: number) => {
+            if (foundInstances === -1) {
+                this.cleanptupuagrregional();
             }
-        } else {
-            this.ptupuagrRegional.removeCSSClass('noResultsLenseSearch');
-            this.ptupuagrRegional.searchResults = [];
-            this.cleanptupuagrregional();
-        }
-
+            if (foundInstances === 1) {
+                this.processptupuagrregionalSelected(0);
+            }
+            this.changeDetectorRef.markForCheck();
+        });
         this.changeDetectorRef.markForCheck();
     }
 
@@ -561,7 +513,7 @@ export class GSSIUuTCREARAGENTEComponent extends AbstractServiceIU implements On
                 this.ptupuagrRegional.cleanSelectedInstances();
             }
             selectedInstance.oid = JSON.parse(selectedInstance.jsonOID);
-            this.ptupuagrRegional.getSelectedInstances().push(selectedInstance);
+            this.ptupuagrRegional.addInstances(selectedInstance);
         }
         this.executeDependecyRulesptupuagrregional('SetValue', false);
         this.changeDetectorRef.markForCheck();

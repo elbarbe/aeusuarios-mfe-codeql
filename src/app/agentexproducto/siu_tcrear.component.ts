@@ -44,8 +44,8 @@ export class AgentexProductoSIUuTCREARComponent extends AbstractServiceIU implem
             'Crear');
 
         // Create inbound argument components
-        this.ptupuagrProductoT = new FieldOVLenseSearch(this.langMng);
-        this.ptupuagrAsesor = new FieldOVLenseSearch(this.langMng);
+        this.ptupuagrProductoT = new FieldOVLenseSearch(this.langMng, this.util);
+        this.ptupuagrAsesor = new FieldOVLenseSearch(this.langMng, this.util);
         this.ptupuatrFechaInicio = new Field(this.langMng);
         this.ptupuatrFechaFin = new Field(this.langMng);
         this.ptupuatrCodigo = new Field(this.langMng);
@@ -202,44 +202,20 @@ export class AgentexProductoSIUuTCREARComponent extends AbstractServiceIU implem
             });
         }
     }
-
     /**
      * Process the change in the pt_p_agrProductoT lense search argument
      */
     public onptupuagrproductotChange(): void {
-
-        const searchText = this.ptupuagrProductoT.text;
-        if (searchText && searchText !== '') {
-            if (searchText !== this.ptupuagrProductoT.lastText) {
-                this.ptupuagrProductoT.removeCSSClass('noResultsLenseSearch');
-                this.ptupuagrProductoT.lastText = searchText;
-                this.util.searchLenseSearch(ModelConstants.Productos.name, 'IC_Producto', searchText, [], null).then(
-                        (response: any) => {
-                            this.ptupuagrProductoT.removeCSSClass('noResultsLenseSearch');
-                            this.ptupuagrProductoT.searchResults = response.results;
-                            if (this.ptupuagrProductoT.searchResults &&
-                                this.ptupuagrProductoT.searchResults.length === 0) {
-                                this.ptupuagrProductoT.addCSSClass('noResultsLenseSearch');
-                            }
-                            if (this.ptupuagrProductoT.searchResults &&
-                                this.ptupuagrProductoT.searchResults.length === 1) {
-                                this.processptupuagrproductotSelected(0);
-                            }
-                            this.changeDetectorRef.markForCheck();
-                        },
-                        (response: any) => {
-                            this.ptupuagrProductoT.removeCSSClass('noResultsLenseSearch');
-                            this.ptupuagrProductoT.searchResults = [];
-                            this.util.addErrorMessage(response.message);
-                            this.changeDetectorRef.markForCheck();
-                        });
+        this.executeLenseSearch(this.ptupuagrProductoT, ModelConstants.Productos.name, 'IC_Producto',
+            []).then( (foundInstances: number) => {
+            if (foundInstances === -1) {
+                this.cleanptupuagrproductot();
             }
-        } else {
-            this.ptupuagrProductoT.removeCSSClass('noResultsLenseSearch');
-            this.ptupuagrProductoT.searchResults = [];
-            this.cleanptupuagrproductot();
-        }
-
+            if (foundInstances === 1) {
+                this.processptupuagrproductotSelected(0);
+            }
+            this.changeDetectorRef.markForCheck();
+        });
         this.changeDetectorRef.markForCheck();
     }
 
@@ -259,7 +235,7 @@ export class AgentexProductoSIUuTCREARComponent extends AbstractServiceIU implem
                 this.ptupuagrProductoT.cleanSelectedInstances();
             }
             selectedInstance.oid = JSON.parse(selectedInstance.jsonOID);
-            this.ptupuagrProductoT.getSelectedInstances().push(selectedInstance);
+            this.ptupuagrProductoT.addInstances(selectedInstance);
         }
         this.executeDependecyRulesptupuagrproductot('SetValue', false);
         this.changeDetectorRef.markForCheck();
@@ -322,44 +298,20 @@ export class AgentexProductoSIUuTCREARComponent extends AbstractServiceIU implem
             });
         }
     }
-
     /**
      * Process the change in the pt_p_agrAsesor lense search argument
      */
     public onptupuagrasesorChange(): void {
-
-        const searchText = this.ptupuagrAsesor.text;
-        if (searchText && searchText !== '') {
-            if (searchText !== this.ptupuagrAsesor.lastText) {
-                this.ptupuagrAsesor.removeCSSClass('noResultsLenseSearch');
-                this.ptupuagrAsesor.lastText = searchText;
-                this.util.searchLenseSearch(ModelConstants.Asesor.name, 'IC_Asesor', searchText, [], null).then(
-                        (response: any) => {
-                            this.ptupuagrAsesor.removeCSSClass('noResultsLenseSearch');
-                            this.ptupuagrAsesor.searchResults = response.results;
-                            if (this.ptupuagrAsesor.searchResults &&
-                                this.ptupuagrAsesor.searchResults.length === 0) {
-                                this.ptupuagrAsesor.addCSSClass('noResultsLenseSearch');
-                            }
-                            if (this.ptupuagrAsesor.searchResults &&
-                                this.ptupuagrAsesor.searchResults.length === 1) {
-                                this.processptupuagrasesorSelected(0);
-                            }
-                            this.changeDetectorRef.markForCheck();
-                        },
-                        (response: any) => {
-                            this.ptupuagrAsesor.removeCSSClass('noResultsLenseSearch');
-                            this.ptupuagrAsesor.searchResults = [];
-                            this.util.addErrorMessage(response.message);
-                            this.changeDetectorRef.markForCheck();
-                        });
+        this.executeLenseSearch(this.ptupuagrAsesor, ModelConstants.Asesor.name, 'IC_Asesor',
+            []).then( (foundInstances: number) => {
+            if (foundInstances === -1) {
+                this.cleanptupuagrasesor();
             }
-        } else {
-            this.ptupuagrAsesor.removeCSSClass('noResultsLenseSearch');
-            this.ptupuagrAsesor.searchResults = [];
-            this.cleanptupuagrasesor();
-        }
-
+            if (foundInstances === 1) {
+                this.processptupuagrasesorSelected(0);
+            }
+            this.changeDetectorRef.markForCheck();
+        });
         this.changeDetectorRef.markForCheck();
     }
 
@@ -379,7 +331,7 @@ export class AgentexProductoSIUuTCREARComponent extends AbstractServiceIU implem
                 this.ptupuagrAsesor.cleanSelectedInstances();
             }
             selectedInstance.oid = JSON.parse(selectedInstance.jsonOID);
-            this.ptupuagrAsesor.getSelectedInstances().push(selectedInstance);
+            this.ptupuagrAsesor.addInstances(selectedInstance);
         }
         this.executeDependecyRulesptupuagrasesor('SetValue', false);
         this.changeDetectorRef.markForCheck();

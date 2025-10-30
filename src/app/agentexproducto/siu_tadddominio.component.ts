@@ -42,7 +42,7 @@ export class AgentexProductoSIUuTADDDOMINIOComponent extends AbstractServiceIU i
 
         // Create inbound argument components
         this.puthisAgentexProducto = new FieldOVLense(this.langMng);
-        this.ptupuevcDominio = new FieldOVLenseSearch(this.langMng);
+        this.ptupuevcDominio = new FieldOVLenseSearch(this.langMng, this.util);
 
     }
 
@@ -306,44 +306,20 @@ export class AgentexProductoSIUuTADDDOMINIOComponent extends AbstractServiceIU i
             });
         }
     }
-
     /**
      * Process the change in the pt_p_evcDominio lense search argument
      */
     public onptupuevcdominioChange(): void {
-
-        const searchText = this.ptupuevcDominio.text;
-        if (searchText && searchText !== '') {
-            if (searchText !== this.ptupuevcDominio.lastText) {
-                this.ptupuevcDominio.removeCSSClass('noResultsLenseSearch');
-                this.ptupuevcDominio.lastText = searchText;
-                this.util.searchLenseSearch(ModelConstants.Dominio.name, 'IC_Dominio', searchText, [], null).then(
-                        (response: any) => {
-                            this.ptupuevcDominio.removeCSSClass('noResultsLenseSearch');
-                            this.ptupuevcDominio.searchResults = response.results;
-                            if (this.ptupuevcDominio.searchResults &&
-                                this.ptupuevcDominio.searchResults.length === 0) {
-                                this.ptupuevcDominio.addCSSClass('noResultsLenseSearch');
-                            }
-                            if (this.ptupuevcDominio.searchResults &&
-                                this.ptupuevcDominio.searchResults.length === 1) {
-                                this.processptupuevcdominioSelected(0);
-                            }
-                            this.changeDetectorRef.markForCheck();
-                        },
-                        (response: any) => {
-                            this.ptupuevcDominio.removeCSSClass('noResultsLenseSearch');
-                            this.ptupuevcDominio.searchResults = [];
-                            this.util.addErrorMessage(response.message);
-                            this.changeDetectorRef.markForCheck();
-                        });
+        this.executeLenseSearch(this.ptupuevcDominio, ModelConstants.Dominio.name, 'IC_Dominio',
+            []).then( (foundInstances: number) => {
+            if (foundInstances === -1) {
+                this.cleanptupuevcdominio();
             }
-        } else {
-            this.ptupuevcDominio.removeCSSClass('noResultsLenseSearch');
-            this.ptupuevcDominio.searchResults = [];
-            this.cleanptupuevcdominio();
-        }
-
+            if (foundInstances === 1) {
+                this.processptupuevcdominioSelected(0);
+            }
+            this.changeDetectorRef.markForCheck();
+        });
         this.changeDetectorRef.markForCheck();
     }
 
@@ -363,7 +339,7 @@ export class AgentexProductoSIUuTADDDOMINIOComponent extends AbstractServiceIU i
                 this.ptupuevcDominio.cleanSelectedInstances();
             }
             selectedInstance.oid = JSON.parse(selectedInstance.jsonOID);
-            this.ptupuevcDominio.getSelectedInstances().push(selectedInstance);
+            this.ptupuevcDominio.addInstances(selectedInstance);
         }
         this.executeDependecyRulesptupuevcdominio('SetValue', false);
         this.changeDetectorRef.markForCheck();
