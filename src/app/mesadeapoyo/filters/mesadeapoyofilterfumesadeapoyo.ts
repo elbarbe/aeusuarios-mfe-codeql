@@ -7,7 +7,7 @@ import { StandardFunctions } from '../../common/standardFunctions';
 import { LanguageMng } from '../../common/languageMng';
 
 /**
- * Manages the filter F_MesaDeApoyo of class MesaDeApoyo
+ * « Manages the filter F_MesaDeApoyo of class MesaDeApoyo »
  */
 export class MesaDeApoyoFilterFuMesaDeApoyo extends AbstractFilter {
 

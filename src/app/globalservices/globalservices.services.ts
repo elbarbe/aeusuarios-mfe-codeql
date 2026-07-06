@@ -5,7 +5,7 @@ import { ErrorInformation } from '../common/answerRequestInformation';
 import { JsonUtility } from '../common/jsonUtility';
 
 /**
- * Global services
+ * « Global services »
  */
 export class GlobalServicesServices extends AbstractServices {
 
@@ -23,15 +23,22 @@ export class GlobalServicesServices extends AbstractServices {
 
     /**
      * Call to the service 'OGSINCASESORES' in the backend
-     * Promise is resolved if service execution is successful and returns void.
+     * Promise is resolved if service execution is successful and returns its outbound arguments in a JSON object.
      * If service fails, promise is rejected and returned an instance of ErrorInformation
      */
     public oGSINCASESORES(
-        ): Promise<ErrorInformation | void> {
+        ):
+        Promise<ErrorInformation | {
+            oamensaje: string
+        }> {
         const request = {};
-        return new Promise<ErrorInformation | void> ((resolve, reject) => {
-             this.callService(this.oGSINCASESORESSrvName, request).then((response: any) => {
-                resolve();
+        return new Promise<ErrorInformation | {
+            oamensaje: string
+        }> ((resolve, reject) => {
+            this.callService(this.oGSINCASESORESSrvName, request).then((response: any) => {
+                resolve({
+                    oamensaje: response.oamensaje
+                });
             }).catch( (errorInfo: ErrorInformation) => {
                 reject(errorInfo);
             });

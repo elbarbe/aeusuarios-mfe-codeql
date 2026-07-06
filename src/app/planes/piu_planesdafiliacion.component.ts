@@ -1,7 +1,7 @@
 import { ChangeDetectorRef } from '@angular/core';
 import { AppGlobalInfo } from '../app.appglobalinfo';
 import { Util } from '../common/app.utils';
-import { DisplaySetItem, AccNavItem } from '../common/queryIUElements';
+import { DisplaySetItem, AccNavItem, ScenarioType, OpenScenarioType } from '../common/queryIUElements';
 import { ModelConstants } from '../common/model.constants';
 import { AbstractPIU } from '../common/abstractPIU';
 import { DefinedSelections } from '../common/definedSelection';
@@ -157,7 +157,7 @@ export class PlanesPIUuPlanesDAfiliacionComponent extends AbstractPIU {
         accItem.agents = [ModelConstants.Admin.name, ModelConstants.Superadmin.name];
         accItem.targetClass = ModelConstants.Afiliaciones.name;
         accItem.targetUI = ModelConstants.Afiliaciones.siuuinsplan;
-
+        accItem.targetType  = ScenarioType.Normal;
         this.actions.push(accItem);
 
         accItem = new AccNavItem();
@@ -171,7 +171,7 @@ export class PlanesPIUuPlanesDAfiliacionComponent extends AbstractPIU {
         accItem.agents = [ModelConstants.Admin.name, ModelConstants.Superadmin.name];
         accItem.targetClass = ModelConstants.Planes.name;
         accItem.targetUI = ModelConstants.Planes.siuudelplan;
-
+        accItem.targetType  = ScenarioType.Normal;
         this.actions.push(accItem);
 
     }

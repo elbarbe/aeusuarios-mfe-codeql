@@ -5,7 +5,7 @@ import { ErrorInformation, QueryResponse } from '../common/answerRequestInformat
 import { JsonUtility } from '../common/jsonUtility';
 
 /**
- * Service and queries of class 'AgentexProducto'
+ * « Service and queries of class 'AgentexProducto' »
  */
 export class AgentexProductoServices extends AbstractServices {
 

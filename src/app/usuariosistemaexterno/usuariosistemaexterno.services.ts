@@ -4,7 +4,7 @@ import { Util } from '../common/app.utils';
 import { ErrorInformation } from '../common/answerRequestInformation';
 
 /**
- * Service and queries of class 'UsuarioSistemaExterno'
+ * « Service and queries of class 'UsuarioSistemaExterno' »
  */
 export class UsuarioSistemaExternoServices extends AbstractServices {
 

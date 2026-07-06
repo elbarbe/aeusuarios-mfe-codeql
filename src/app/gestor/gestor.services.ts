@@ -4,7 +4,7 @@ import { Util } from '../common/app.utils';
 import { QueryResponse } from '../common/answerRequestInformation';
 
 /**
- * Service and queries of class 'Gestor'
+ * « Service and queries of class 'Gestor' »
  */
 export class GestorServices extends AbstractServices {
 

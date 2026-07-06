@@ -7,7 +7,7 @@ import { StandardFunctions } from '../../common/standardFunctions';
 import { LanguageMng } from '../../common/languageMng';
 
 /**
- * Manages the filter F_Funcionario_PorNombreNoAseso of class Funcionario
+ * « Manages the filter F_Funcionario_PorNombreNoAseso of class Funcionario »
  */
 export class FuncionarioFilterFuFuncionariouPorNombreNoAseso extends AbstractFilter {
 

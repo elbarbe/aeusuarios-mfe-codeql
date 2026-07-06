@@ -1,7 +1,7 @@
 import { Component, ChangeDetectionStrategy, OnInit, ChangeDetectorRef } from '@angular/core';
 import { AppGlobalInfo } from '../app.appglobalinfo';
 import { Util } from '../common/app.utils';
-import { DisplaySetItem, AccNavItem } from '../common/queryIUElements';
+import { DisplaySetItem, AccNavItem, ScenarioType, OpenScenarioType } from '../common/queryIUElements';
 import { ModelConstants } from '../common/model.constants';
 import { AbstractPIU } from '../common/abstractPIU';
 import { AsesorFilterFuAsesoresAgencia} from './filters/asesorfilterfuasesoresagencia';
@@ -348,7 +348,7 @@ export class AsesorPIUuAsesoresDeAgenciaComponent extends AbstractPIU implements
         accItem.agents = [ModelConstants.Admin.name, ModelConstants.Superadmin.name];
         accItem.targetClass = ModelConstants.Globalservices.name;
         accItem.targetUI = ModelConstants.Globalservices.siuutgnewasesoragencia;
-
+        accItem.targetType  = ScenarioType.Normal;
         this.actions.push(accItem);
 
         accItem = new AccNavItem();
@@ -362,7 +362,7 @@ export class AsesorPIUuAsesoresDeAgenciaComponent extends AbstractPIU implements
         accItem.agents = [ModelConstants.Admin.name, ModelConstants.Superadmin.name];
         accItem.targetClass = ModelConstants.Globalservices.name;
         accItem.targetUI = ModelConstants.Globalservices.siuutgmodasesoragencia;
-
+        accItem.targetType  = ScenarioType.Normal;
         this.actions.push(accItem);
 
         accItem = new AccNavItem();
@@ -376,7 +376,7 @@ export class AsesorPIUuAsesoresDeAgenciaComponent extends AbstractPIU implements
         accItem.agents = [ModelConstants.Funcionario.name, ModelConstants.Admin.name, ModelConstants.Superadmin.name];
         accItem.targetClass = ModelConstants.Asesor.name;
         accItem.targetUI = ModelConstants.Asesor.mdiuuasesorproductos;
-
+        accItem.targetType  = ScenarioType.MasterDetail;
         this.actions.push(accItem);
 
         accItem = new AccNavItem();
@@ -393,7 +393,7 @@ export class AsesorPIUuAsesoresDeAgenciaComponent extends AbstractPIU implements
         accItem.preconditionAttributes.push(
             { agents: [],
               attributes: ['manual'] });
-
+        accItem.targetType  = ScenarioType.Delete;
         this.actions.push(accItem);
 
     }
@@ -415,6 +415,7 @@ export class AsesorPIUuAsesoresDeAgenciaComponent extends AbstractPIU implements
         navItem.targetClass = ModelConstants.Loginformacionasesor.name;
         navItem.targetUI = ModelConstants.Loginformacionasesor.piuuloginformacionasesor;
         navItem.rolePath = 'Asesor';
+        navItem.targetType  = ScenarioType.Population;
         this.navigations.push(navItem);
 
         navItem = new AccNavItem();
@@ -429,6 +430,7 @@ export class AsesorPIUuAsesoresDeAgenciaComponent extends AbstractPIU implements
         navItem.targetClass = ModelConstants.Loghistoricoplanes.name;
         navItem.targetUI = ModelConstants.Loghistoricoplanes.piuuloghistoricoplanes;
         navItem.rolePath = 'Asesor';
+        navItem.targetType  = ScenarioType.Population;
         this.navigations.push(navItem);
 
     }

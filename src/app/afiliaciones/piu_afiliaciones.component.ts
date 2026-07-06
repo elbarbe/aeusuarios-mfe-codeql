@@ -1,7 +1,7 @@
 import { Component, ChangeDetectionStrategy, OnInit, ChangeDetectorRef } from '@angular/core';
 import { AppGlobalInfo } from '../app.appglobalinfo';
 import { Util } from '../common/app.utils';
-import { DisplaySetItem, AccNavItem } from '../common/queryIUElements';
+import { DisplaySetItem, AccNavItem, ScenarioType, OpenScenarioType } from '../common/queryIUElements';
 import { ModelConstants } from '../common/model.constants';
 import { AbstractPIU } from '../common/abstractPIU';
 import { AfiliacionesFilterFuAfiliacionesPorNombre} from './filters/afiliacionesfilterfuafiliacionespornombre';
@@ -154,7 +154,7 @@ export class AfiliacionesPIUuAfiliacionesComponent extends AbstractPIU implement
             this.langMng.translateText(
             'cls_Funcionario_svc_TCAMBIARDISPONIBLE',
             'Marcar disponibilidad'));
-
+        accItem.targetType  = ScenarioType.Normal;
         this.actions.push(accItem);
 
         accItem = new AccNavItem();
@@ -168,7 +168,7 @@ export class AfiliacionesPIUuAfiliacionesComponent extends AbstractPIU implement
         accItem.agents = [ModelConstants.Funcionario.name, ModelConstants.Admin.name, ModelConstants.Superadmin.name];
         accItem.targetClass = ModelConstants.Afiliaciones.name;
         accItem.targetUI = ModelConstants.Afiliaciones.mdiuuafiliacionesplanes;
-
+        accItem.targetType  = ScenarioType.MasterDetail;
         this.actions.push(accItem);
 
     }
@@ -190,6 +190,7 @@ export class AfiliacionesPIUuAfiliacionesComponent extends AbstractPIU implement
         navItem.targetClass = ModelConstants.Logfuncionario.name;
         navItem.targetUI = ModelConstants.Logfuncionario.piuulogfuncionario;
         navItem.rolePath = 'Funcionario';
+        navItem.targetType  = ScenarioType.Population;
         this.navigations.push(navItem);
 
     }

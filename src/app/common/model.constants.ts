@@ -1,5 +1,5 @@
 /**
- * Model constans names
+ * « Model constans names »
  */
 export class ModelConstants {
     public static readonly Funcionario = {name : 'Funcionario', siuutcambiardisponible: 'siu_tcambiardisponible',
@@ -143,6 +143,7 @@ export class ModelConstants {
         siuueliminar: 'siu_eliminar', siuumodificar: 'siu_modificar', siuusetabcdefgh: 'siu_setpassword',
         piuuusuariosistemaexterno: 'piu_usuariosistemaexterno'};
     public static readonly Globalservices = {name : 'GlobalServices', siuuogsincasesores: 'siu_ogsincasesores',
-        siuutcrearagente: 'siu_tcrearagente', siuutmodificaragente: 'siu_tmodificaragente',
-        siuutgnewasesoragencia: 'siu_tgnewasesoragencia', siuutgmodasesoragencia: 'siu_tgmodasesoragencia'};
+        siuuogsincasesoresuout: 'siu_ogsincasesores_out', siuutcrearagente: 'siu_tcrearagente',
+        siuutmodificaragente: 'siu_tmodificaragente', siuutgnewasesoragencia: 'siu_tgnewasesoragencia',
+        siuutgmodasesoragencia: 'siu_tgmodasesoragencia'};
 }

@@ -7,7 +7,7 @@ import { StandardFunctions } from '../../common/standardFunctions';
 import { LanguageMng } from '../../common/languageMng';
 
 /**
- * Manages the filter F_Gestor of class Gestor
+ * « Manages the filter F_Gestor of class Gestor »
  */
 export class GestorFilterFuGestor extends AbstractFilter {
 

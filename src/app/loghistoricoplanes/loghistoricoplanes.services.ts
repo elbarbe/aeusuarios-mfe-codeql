@@ -4,7 +4,7 @@ import { Util } from '../common/app.utils';
 import { QueryResponse } from '../common/answerRequestInformation';
 
 /**
- * Service and queries of class 'LogHistoricoPlanes'
+ * « Service and queries of class 'LogHistoricoPlanes' »
  */
 export class LogHistoricoPlanesServices extends AbstractServices {
 

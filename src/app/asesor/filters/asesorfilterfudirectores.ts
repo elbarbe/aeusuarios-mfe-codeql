@@ -7,7 +7,7 @@ import { StandardFunctions } from '../../common/standardFunctions';
 import { LanguageMng } from '../../common/languageMng';
 
 /**
- * Manages the filter F_Directores of class Asesor
+ * « Manages the filter F_Directores of class Asesor »
  */
 export class AsesorFilterFuDirectores extends AbstractFilter {
 

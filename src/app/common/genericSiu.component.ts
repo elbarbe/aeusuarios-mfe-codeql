@@ -8,7 +8,7 @@ import { ConditionalNavigationMng } from './conditionalNavigationMng';
 import { Field } from './baseIUElements';
 import { Subscription } from 'rxjs';
 /**
- * Generic component for services under specific conditions
+ * « Generic component for services under specific conditions »
  *      Service has not inbound argments or only one and object valued that not allows null
  *      Service has not outbound arguments
  *      Service is not offered in the manu
@@ -21,15 +21,13 @@ import { Subscription } from 'rxjs';
     <waitDialog [showWait]="showWait"></waitDialog> 
     <ng-container *ngIf="visible">
         <div style="text-align: center;margin-bottom: 10px;">
-            <h2>{{title}}</h2>
-
+            <h2 class="title">{{title}}</h2>
             <div>
                 <label class="control-label">{{argAlias}}</label>
                 <label class="control-label" style="padding-left: 10px;">
                     {{argValue}}
                 </label>
             </div>
-
         </div>
         <div class="col-12 siuButtons">
             <button type="button" class="btnOk btn btn-primary" (click)="saveChanges()">
@@ -77,11 +75,12 @@ export class GenericSiuComponent implements OnInit {
     /** Selected Oids */
     private originalOidList: any[] = [];
     private oidList: any[] = [];
-
     /** Scenario is visible or not */
     public visible = true;
-
+    /** Shows wait icon */
     public showWait = false;
+    /** Indicates service request has been performed and answer is pending */
+    public waitingServiceResponse = false;
 
     constructor(
         protected appGlobalInfo: AppGlobalInfo,
@@ -134,6 +133,10 @@ export class GenericSiuComponent implements OnInit {
      * Call service
      */
     public saveChanges(): void {
+        if (this.waitingServiceResponse) {
+            return;
+        }
+        this.waitingServiceResponse = true;
         this.oidList  = [];
         this.originalOidList.forEach(val => this.oidList.push(Object.assign({}, val)));
 
@@ -186,7 +189,11 @@ export class GenericSiuComponent implements OnInit {
                     this.util.addErrorMessageList(errorList);
                     this.showWait = false;
                     this.util.hideProgressBar();
+                    this.waitingServiceResponse = false;
                     this.changeDetectorRef.markForCheck();
+                    if (executionCount > 1) {
+                        this.processCancel(true);
+                    }
                 } else {
                     this.executeService(this.oidList.pop(), errorList, executionCount, totalExecutions);
                 }
@@ -208,6 +215,10 @@ export class GenericSiuComponent implements OnInit {
                 this.showWait = false;
                 this.util.hideProgressBar();
                 this.changeDetectorRef.markForCheck();
+                this.waitingServiceResponse = false;
+                if (executionCount > 1) {
+                    this.processCancel(true);
+                }
             }
         } else {
             this.executeService(this.oidList.pop(), errorList, executionCount, totalExecutions);
@@ -325,9 +336,6 @@ export class GenericSiuComponent implements OnInit {
             case ModelConstants.Usuariosistemaexterno.name:
                 siuFound = this.configureClassUsuarioSistemaExterno();
                 break;
-            case ModelConstants.Globalservices.name:
-                siuFound = this.configureGlobalServices();
-                break;
         }
         return siuFound;
     }
@@ -423,23 +431,6 @@ export class GenericSiuComponent implements OnInit {
                     'Sistema Externo');
                 this.argSupInfAttNames = 'login';
                 this.argSupInfAttTypes = [Field.dtString];
-                siuFound = true;
-                break;
-        }
-        return siuFound;
-    }
-
-    /**
-     * Configuration for Global Services
-     */
-    private configureGlobalServices(): boolean {
-        let siuFound = false;
-        switch (this.serviceIUName) {
-            case ModelConstants.Globalservices.siuuogsincasesores:
-                this.title = this.langMng.translateText('gs_OGSINCASESORES',
-                    'Sincronizar asesores');
-                this.serviceName = 'OGSINCASESORES';
-                this.siuHasNoShow = true;
                 siuFound = true;
                 break;
         }

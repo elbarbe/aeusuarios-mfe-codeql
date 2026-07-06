@@ -65,7 +65,7 @@ export class UsuarioSistemaExternoSIUumodificarComponent extends AbstractService
         this.puthisUsuarioSistemaExterno.dataType = ModelConstants.Usuariosistemaexterno.name;
         this.puthisUsuarioSistemaExterno.allowMultiSelect = true;
         this.puthisUsuarioSistemaExterno.oidFields = Array(1);
-        this.puthisUsuarioSistemaExterno.oidFieldsTypes = ['string'];
+        this.puthisUsuarioSistemaExterno.oidFieldsTypes = [Field.dtString];
         this.puthisUsuarioSistemaExterno.assignCSS();
         this.fields.push(this.puthisUsuarioSistemaExterno);
 
@@ -235,7 +235,7 @@ export class UsuarioSistemaExternoSIUumodificarComponent extends AbstractService
         this.clearValidationMessages();
         let fieldsHasValue = true;
         for (const field of this.puthisUsuarioSistemaExterno.oidFields) {
-            if (!field) {
+            if (this.util.isNull(field)) {
                 fieldsHasValue = false;
                 break;
             }

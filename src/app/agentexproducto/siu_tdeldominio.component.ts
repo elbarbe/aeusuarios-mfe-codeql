@@ -64,7 +64,7 @@ export class AgentexProductoSIUuTDELDOMINIOComponent extends AbstractServiceIU i
         this.puthisAgentexProducto.mandatory = true;
         this.puthisAgentexProducto.dataType = ModelConstants.Agentexproducto.name;
         this.puthisAgentexProducto.oidFields = Array(2);
-        this.puthisAgentexProducto.oidFieldsTypes = ['autonumerico', 'autonumerico'];
+        this.puthisAgentexProducto.oidFieldsTypes = [Field.dtAuto, Field.dtAuto];
         this.puthisAgentexProducto.assignCSS();
         this.fields.push(this.puthisAgentexProducto);
 
@@ -214,7 +214,7 @@ export class AgentexProductoSIUuTDELDOMINIOComponent extends AbstractServiceIU i
         this.clearValidationMessages();
         let fieldsHasValue = true;
         for (const field of this.puthisAgentexProducto.oidFields) {
-            if (!field) {
+            if (this.util.isNull(field)) {
                 fieldsHasValue = false;
                 break;
             }

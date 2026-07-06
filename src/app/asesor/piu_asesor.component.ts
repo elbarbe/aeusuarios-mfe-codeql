@@ -1,7 +1,7 @@
 import { Component, ChangeDetectionStrategy, OnInit, ChangeDetectorRef } from '@angular/core';
 import { AppGlobalInfo } from '../app.appglobalinfo';
 import { Util } from '../common/app.utils';
-import { DisplaySetItem, AccNavItem } from '../common/queryIUElements';
+import { DisplaySetItem, AccNavItem, ScenarioType, OpenScenarioType } from '../common/queryIUElements';
 import { ModelConstants } from '../common/model.constants';
 import { AbstractPIU } from '../common/abstractPIU';
 import { AsesorFilterFuAsesores} from './filters/asesorfilterfuasesores';
@@ -352,7 +352,7 @@ export class AsesorPIUuAsesorComponent extends AbstractPIU implements OnInit {
             this.langMng.translateText(
             'cls_Asesor_svc_TMODIFICARASESOR',
             'Modificar asesor'));
-
+        accItem.targetType  = ScenarioType.Normal;
         this.actions.push(accItem);
 
         accItem = new AccNavItem();
@@ -370,7 +370,7 @@ export class AsesorPIUuAsesorComponent extends AbstractPIU implements OnInit {
             this.langMng.translateText(
             'cls_Funcionario_svc_TCAMBIARDISPONIBLE',
             'Marcar disponibilidad'));
-
+        accItem.targetType  = ScenarioType.Normal;
         this.actions.push(accItem);
 
         accItem = new AccNavItem();
@@ -384,8 +384,8 @@ export class AsesorPIUuAsesorComponent extends AbstractPIU implements OnInit {
         accItem.agents = [ModelConstants.Admin.name, ModelConstants.Superadmin.name];
         accItem.targetClass = ModelConstants.Globalservices.name;
         accItem.targetUI = ModelConstants.Globalservices.siuuogsincasesores;
-        accItem.setNoShowProperties('OGSINCASESORES', '', '', false);
-
+        accItem.setNoShowProperties('OGSINCASESORES', '', 'siu_ogsincasesores_out', false);
+        accItem.targetType  = ScenarioType.Normal;
         this.actions.push(accItem);
 
         accItem = new AccNavItem();
@@ -399,7 +399,7 @@ export class AsesorPIUuAsesorComponent extends AbstractPIU implements OnInit {
         accItem.agents = [ModelConstants.Funcionario.name, ModelConstants.Admin.name, ModelConstants.Superadmin.name];
         accItem.targetClass = ModelConstants.Asesor.name;
         accItem.targetUI = ModelConstants.Asesor.mdiuuasesorproductos;
-
+        accItem.targetType  = ScenarioType.MasterDetail;
         this.actions.push(accItem);
 
     }
@@ -421,6 +421,7 @@ export class AsesorPIUuAsesorComponent extends AbstractPIU implements OnInit {
         navItem.targetClass = ModelConstants.Logfuncionario.name;
         navItem.targetUI = ModelConstants.Logfuncionario.piuulogfuncionario;
         navItem.rolePath = 'Funcionario';
+        navItem.targetType  = ScenarioType.Population;
         this.navigations.push(navItem);
 
         navItem = new AccNavItem();
@@ -435,6 +436,7 @@ export class AsesorPIUuAsesorComponent extends AbstractPIU implements OnInit {
         navItem.targetClass = ModelConstants.Loginformacionasesor.name;
         navItem.targetUI = ModelConstants.Loginformacionasesor.piuuloginformacionasesor;
         navItem.rolePath = 'Asesor';
+        navItem.targetType  = ScenarioType.Population;
         this.navigations.push(navItem);
 
         navItem = new AccNavItem();
@@ -449,6 +451,7 @@ export class AsesorPIUuAsesorComponent extends AbstractPIU implements OnInit {
         navItem.targetClass = ModelConstants.Loghistoricoplanes.name;
         navItem.targetUI = ModelConstants.Loghistoricoplanes.piuuloghistoricoplanes;
         navItem.rolePath = 'Asesor';
+        navItem.targetType  = ScenarioType.Population;
         this.navigations.push(navItem);
 
     }
