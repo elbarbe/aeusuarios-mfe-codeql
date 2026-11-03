@@ -360,7 +360,7 @@ export class GSSIUuTGNEWASESORAGENCIAComponent extends AbstractServiceIU impleme
      * @param groupId Group id.
      */
     public isGroupVisible(groupId: string): boolean {
-        let isVisible = true;
+        let isVisible;
 
         if (groupId === '1') {
             isVisible = this.ptupuatrUsuario.visible ||
